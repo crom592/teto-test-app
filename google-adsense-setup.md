@@ -5,13 +5,13 @@
 ### 1.1 AdSense 계정 생성
 1. [Google AdSense](https://www.google.com/adsense/) 방문
 2. "시작하기" 클릭
-3. 웹사이트 URL 입력: `https://your-domain.com`
+3. 웹사이트 URL 입력: `https://teto-test-app.pages.dev`
 4. 국가/지역 선택: 대한민국
 5. 결제 정보 입력
 
 ### 1.2 사이트 추가 및 승인
 1. AdSense 대시보드에서 "사이트" → "사이트 추가"
-2. 사이트 URL 입력
+2. 사이트 URL 입력: `https://teto-test-app.pages.dev`
 3. 승인 대기 (보통 1-14일 소요)
 
 ## 2. 코드 구현 방법

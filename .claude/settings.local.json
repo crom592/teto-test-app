@@ -9,7 +9,11 @@
       "Bash(git remote add:*)",
       "Bash(git push:*)",
       "Bash(gh repo view:*)",
-      "Bash(gh api:*)"
+      "Bash(gh api:*)",
+      "Bash(curl:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(git commit:*)"
     ],
     "deny": []
   }

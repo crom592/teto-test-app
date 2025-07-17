@@ -23,7 +23,7 @@ Disallow: /*.bak
 Disallow: /*~
 
 # 사이트맵 위치 명시
-Sitemap: https://crom592.github.io/teto-test-app/sitemap.xml
+Sitemap: https://teto-test-app.pages.dev/sitemap.xml
 
 # Google AdSense 봇 허용
 User-agent: Mediapartners-Google
