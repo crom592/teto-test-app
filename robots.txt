@@ -1,0 +1,39 @@
+User-agent: *
+Allow: /
+
+# 크롤링 허용 페이지
+Allow: /index.html
+Allow: /quiz.html
+Allow: /result.html
+Allow: /about.html
+Allow: /privacy.html
+Allow: /contact.html
+
+# CSS, JS, 이미지 파일 허용
+Allow: /css/
+Allow: /js/
+Allow: /assets/
+
+# 광고 페이지는 검색엔진 노출 방지
+Disallow: /ads.html
+
+# 임시 파일 및 백업 파일 차단
+Disallow: /*.tmp
+Disallow: /*.bak
+Disallow: /*~
+
+# 사이트맵 위치 명시
+Sitemap: https://your-domain.com/sitemap.xml
+
+# 특정 검색엔진 설정
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: NaverBot
+Allow: /
+Crawl-delay: 1

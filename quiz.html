@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에겐테토 심리 테스트 - 질문 답변</title>
+    <meta name="description" content="에겐남·테토녀 심리 테스트 질문에 답하고 나의 성향을 알아보세요">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+</head>
+<body class="quiz-page">
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1 class="logo"><a href="index.html">에겐테토</a></h1>
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar"></div>
+                    </div>
+                    <span class="progress-text" id="progressText">1/12</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="quiz-container">
+        <div class="quiz-content">
+            <div class="question-card" id="questionCard">
+                <div class="question-number" id="questionNumber">질문 1</div>
+                <h2 class="question-text" id="questionText">
+                    친구가 고민을 털어놓을 때 나의 첫 반응은?
+                </h2>
+                <div class="answer-options" id="answerOptions">
+                    <button class="answer-btn" data-type="E" onclick="selectAnswer('E')">
+                        <span class="answer-letter">A</span>
+                        <span class="answer-text">"정말 속상했겠다. 어떤 기분인지 이해해" 하며 감정에 공감한다</span>
+                    </button>
+                    <button class="answer-btn" data-type="T" onclick="selectAnswer('T')">
+                        <span class="answer-letter">B</span>
+                        <span class="answer-text">"그럼 이렇게 해보는 게 어때?" 하며 구체적인 해결책을 제시한다</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="gender-selection" id="genderSelection" style="display: none;">
+                <h2>성별을 선택해주세요</h2>
+                <div class="gender-options">
+                    <button class="gender-btn" onclick="selectGender('male')">
+                        <span class="gender-icon">👨</span>
+                        <span class="gender-text">남성</span>
+                    </button>
+                    <button class="gender-btn" onclick="selectGender('female')">
+                        <span class="gender-icon">👩</span>
+                        <span class="gender-text">여성</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="navigation-buttons">
+                <button class="nav-btn prev-btn" id="prevBtn" onclick="previousQuestion()" disabled>
+                    ← 이전
+                </button>
+                <button class="nav-btn next-btn" id="nextBtn" onclick="nextQuestion()" disabled>
+                    다음 →
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 12가지 질문 데이터
+        const questions = [
+            {
+                question: "친구가 고민을 털어놓을 때 나의 첫 반응은?",
+                answers: [
+                    { text: ""정말 속상했겠다. 어떤 기분인지 이해해" 하며 감정에 공감한다", type: "E" },
+                    { text: ""그럼 이렇게 해보는 게 어때?" 하며 구체적인 해결책을 제시한다", type: "T" }
+                ]
+            },
+            {
+                question: "팀 프로젝트에서 의견이 갈릴 때 나는?",
+                answers: [
+                    { text: "다른 사람의 의견을 먼저 들어보고 조화로운 방향을 찾는다", type: "E" },
+                    { text: "논리적으로 최선의 방법을 제시하고 설득한다", type: "T" }
+                ]
+            },
+            {
+                question: "연인과 데이트 계획을 세울 때?",
+                answers: [
+                    { text: "상대방이 원하는 것을 먼저 물어보고 배려한다", type: "E" },
+                    { text: "효율적이고 재미있는 코스를 미리 계획해서 제안한다", type: "T" }
+                ]
+            },
+            {
+                question: "직장/학교에서 갈등이 생겼을 때?",
+                answers: [
+                    { text: "조용히 시간을 두고 상황이 자연스럽게 해결되길 기다린다", type: "E" },
+                    { text: "직접 대화를 통해 문제를 명확히 하고 해결한다", type: "T" }
+                ]
+            },
+            {
+                question: "친구들과 함께 있을 때 나의 역할은?",
+                answers: [
+                    { text: "분위기를 살피며 모두가 편안하도록 배려하는 역할", type: "E" },
+                    { text: "결정이 필요할 때 앞장서서 이끄는 역할", type: "T" }
+                ]
+            },
+            {
+                question: "새로운 도전 앞에서 나는?",
+                answers: [
+                    { text: "걱정과 기대가 교차하며 신중하게 생각해본다", type: "E" },
+                    { text: "일단 시작해보고 부딪혀가며 해결한다", type: "T" }
+                ]
+            },
+            {
+                question: "스트레스를 받을 때 나의 해소 방법은?",
+                answers: [
+                    { text: "혼자만의 시간을 가지며 감정을 정리한다", type: "E" },
+                    { text: "운동이나 취미활동으로 에너지를 발산한다", type: "T" }
+                ]
+            },
+            {
+                question: "다른 사람의 부탁을 받았을 때?",
+                answers: [
+                    { text: "거절하기 어려워 웬만하면 들어주는 편이다", type: "E" },
+                    { text: "상황을 고려해서 가능한 것과 불가능한 것을 명확히 말한다", type: "T" }
+                ]
+            },
+            {
+                question: "의견을 표현할 때 나는?",
+                answers: [
+                    { text: "상대방의 기분을 상하지 않게 조심스럽게 말한다", type: "E" },
+                    { text: "솔직하고 명확하게 내 생각을 전달한다", type: "T" }
+                ]
+            },
+            {
+                question: "실수를 했을 때 나의 반응은?",
+                answers: [
+                    { text: "죄송하다는 마음에 감정적으로 위축된다", type: "E" },
+                    { text: "실수를 인정하고 다음에 어떻게 할지 계획한다", type: "T" }
+                ]
+            },
+            {
+                question: "리더 역할을 맡게 되었을 때?",
+                answers: [
+                    { text: "팀원들의 의견을 충분히 들어가며 조율한다", type: "E" },
+                    { text: "명확한 목표를 설정하고 효율적으로 추진한다", type: "T" }
+                ]
+            },
+            {
+                question: "연인과의 관계에서 중요하게 생각하는 것은?",
+                answers: [
+                    { text: "서로의 감정을 이해하고 공감하는 것", type: "E" },
+                    { text: "솔직한 소통과 명확한 관계 발전", type: "T" }
+                ]
+            }
+        ];
+
+        let currentQuestion = 0;
+        let scores = { E: 0, T: 0 };
+        let selectedGender = '';
+
+        function updateQuestion() {
+            const question = questions[currentQuestion];
+            
+            document.getElementById('questionNumber').textContent = `질문 ${currentQuestion + 1}`;
+            document.getElementById('questionText').textContent = question.question;
+            document.getElementById('progressText').textContent = `${currentQuestion + 1}/12`;
+            
+            const progressPercent = ((currentQuestion + 1) / 12) * 100;
+            document.getElementById('progressBar').style.width = progressPercent + '%';
+            
+            const answerOptions = document.getElementById('answerOptions');
+            answerOptions.innerHTML = '';
+            
+            question.answers.forEach((answer, index) => {
+                const button = document.createElement('button');
+                button.className = 'answer-btn';
+                button.setAttribute('data-type', answer.type);
+                button.onclick = () => selectAnswer(answer.type);
+                
+                button.innerHTML = `
+                    <span class="answer-letter">${index === 0 ? 'A' : 'B'}</span>
+                    <span class="answer-text">${answer.text}</span>
+                `;
+                
+                answerOptions.appendChild(button);
+            });
+            
+            document.getElementById('prevBtn').disabled = currentQuestion === 0;
+            document.getElementById('nextBtn').disabled = true;
+        }
+
+        function selectAnswer(type) {
+            scores[type]++;
+            
+            // 답변 선택 시 버튼 상태 변경
+            document.querySelectorAll('.answer-btn').forEach(btn => {
+                btn.classList.remove('selected');
+            });
+            
+            event.target.closest('.answer-btn').classList.add('selected');
+            document.getElementById('nextBtn').disabled = false;
+            
+            // 자동으로 다음 질문으로 넘어가기 (0.5초 후)
+            setTimeout(() => {
+                if (currentQuestion < questions.length - 1) {
+                    nextQuestion();
+                } else {
+                    showGenderSelection();
+                }
+            }, 500);
+        }
+
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                updateQuestion();
+            } else {
+                showGenderSelection();
+            }
+        }
+
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                updateQuestion();
+            }
+        }
+
+        function showGenderSelection() {
+            document.getElementById('questionCard').style.display = 'none';
+            document.getElementById('genderSelection').style.display = 'block';
+            document.querySelector('.navigation-buttons').style.display = 'none';
+            document.getElementById('progressText').textContent = '성별 선택';
+            document.getElementById('progressBar').style.width = '100%';
+        }
+
+        function selectGender(gender) {
+            selectedGender = gender;
+            
+            // 결과 저장
+            const result = {
+                scores: scores,
+                gender: selectedGender,
+                type: determineType()
+            };
+            
+            localStorage.setItem('testResult', JSON.stringify(result));
+            
+            // 광고 페이지로 이동
+            window.location.href = 'ads.html';
+        }
+
+        function determineType() {
+            const dominantTrait = scores.E >= scores.T ? 'E' : 'T';
+            return dominantTrait + (selectedGender === 'male' ? '남' : '녀');
+        }
+
+        // 페이지 로드 시 첫 번째 질문 표시
+        window.onload = function() {
+            updateQuestion();
+        };
+    </script>
+</body>
+</html>

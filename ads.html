@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>결과 확인 전 광고 보기 - 에겐테토</title>
+    <meta name="description" content="잠시만요! 결과를 확인하기 전에 스폰서 광고를 확인해주세요">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    
+    <!-- Google AdSense 스크립트 -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+            crossorigin="anonymous"></script>
+</head>
+<body class="ads-page">
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1 class="logo"><a href="index.html">에겐테토</a></h1>
+                <div class="ads-progress">
+                    <span>결과 확인 중...</span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="ads-container">
+        <div class="ads-content">
+            <div class="ads-header">
+                <h2>🎉 테스트 완료!</h2>
+                <p>결과를 확인하기 전에 잠시만 기다려주세요</p>
+            </div>
+
+            <div class="ads-section">
+                <div class="ads-title">
+                    <h3>📢 스폰서 광고</h3>
+                    <p>광고를 확인하고 결과를 받아보세요!</p>
+                </div>
+
+                <!-- Google AdSense 광고 영역 1 -->
+                <div class="ad-container">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                         data-ad-slot="YOUR_AD_SLOT_ID"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+
+                <!-- 대체 광고 (AdSense가 로드되지 않을 때) -->
+                <div class="fallback-ad" id="fallbackAd">
+                    <div class="ad-placeholder">
+                        <h4>🌟 추천 서비스</h4>
+                        <p>더 많은 심리테스트와 재미있는 콘텐츠를 만나보세요!</p>
+                        <button class="ad-button" onclick="openExternalAd()">
+                            더 많은 테스트 보기
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 추가 광고 영역 -->
+                <div class="ad-container secondary-ad">
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                         data-ad-slot="YOUR_SECONDARY_AD_SLOT_ID"
+                         data-ad-format="rectangle"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+
+            <div class="countdown-section">
+                <div class="countdown-circle">
+                    <div class="countdown-number" id="countdownNumber">5</div>
+                </div>
+                <p class="countdown-text">
+                    <span id="countdownText">5초</span> 후 결과를 확인할 수 있습니다
+                </p>
+                <div class="countdown-progress">
+                    <div class="countdown-bar" id="countdownBar"></div>
+                </div>
+            </div>
+
+            <div class="ads-buttons">
+                <button class="result-btn" id="resultBtn" onclick="goToResults()" disabled>
+                    🎯 결과 확인하기
+                </button>
+                <button class="skip-btn" onclick="skipAds()" style="display: none;">
+                    광고 건너뛰기
+                </button>
+            </div>
+
+            <div class="ads-info">
+                <p>💡 광고 수익은 더 좋은 서비스 제공을 위해 사용됩니다</p>
+                <p>🙏 광고 시청해주셔서 감사합니다!</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 에겐테토. 광고 후원으로 무료 서비스를 제공합니다.</p>
+        </div>
+    </footer>
+
+    <script>
+        let countdownTime = 5;
+        let countdownInterval;
+        let hasViewedAd = false;
+
+        // 페이지 로드 시 카운트다운 시작
+        window.onload = function() {
+            // 테스트 결과가 있는지 확인
+            const testResult = localStorage.getItem('testResult');
+            if (!testResult) {
+                // 테스트 결과가 없으면 퀴즈 페이지로 리다이렉트
+                window.location.href = 'quiz.html';
+                return;
+            }
+
+            // 광고 로드 상태 확인
+            checkAdLoad();
+            
+            // 카운트다운 시작
+            startCountdown();
+            
+            // 페이지 체류 시간 추적
+            trackPageView();
+        };
+
+        function startCountdown() {
+            countdownInterval = setInterval(() => {
+                countdownTime--;
+                
+                document.getElementById('countdownNumber').textContent = countdownTime;
+                document.getElementById('countdownText').textContent = countdownTime + '초';
+                
+                // 프로그레스 바 업데이트
+                const progressPercent = ((5 - countdownTime) / 5) * 100;
+                document.getElementById('countdownBar').style.width = progressPercent + '%';
+                
+                if (countdownTime <= 0) {
+                    clearInterval(countdownInterval);
+                    enableResultButton();
+                }
+            }, 1000);
+        }
+
+        function enableResultButton() {
+            document.getElementById('resultBtn').disabled = false;
+            document.getElementById('resultBtn').textContent = '🎯 결과 확인하기';
+            document.getElementById('resultBtn').classList.add('active');
+            
+            // 카운트다운 텍스트 변경
+            document.getElementById('countdownText').textContent = '결과 확인 가능';
+            document.querySelector('.countdown-text').innerHTML = '이제 <strong>결과를 확인</strong>할 수 있습니다!';
+            
+            hasViewedAd = true;
+        }
+
+        function goToResults() {
+            if (!hasViewedAd) {
+                alert('잠시만 기다려주세요. 광고를 확인한 후 결과를 볼 수 있습니다.');
+                return;
+            }
+            
+            // 광고 시청 완료 표시
+            localStorage.setItem('adViewed', 'true');
+            
+            // 결과 페이지로 이동
+            window.location.href = 'result.html';
+        }
+
+        function skipAds() {
+            // 개발 모드에서만 사용할 수 있는 기능
+            if (confirm('광고를 건너뛰시겠습니까? 광고 수익은 서비스 운영에 도움이 됩니다.')) {
+                clearInterval(countdownInterval);
+                enableResultButton();
+            }
+        }
+
+        function openExternalAd() {
+            // 외부 광고 링크 (실제 광고주 링크로 교체)
+            window.open('https://example.com/more-tests', '_blank');
+        }
+
+        function checkAdLoad() {
+            // AdSense 광고가 로드되었는지 확인
+            setTimeout(() => {
+                const adElements = document.querySelectorAll('.adsbygoogle');
+                let adLoaded = false;
+                
+                adElements.forEach(ad => {
+                    if (ad.innerHTML.trim() !== '') {
+                        adLoaded = true;
+                    }
+                });
+                
+                if (!adLoaded) {
+                    // 광고가 로드되지 않았을 때 대체 광고 표시
+                    document.getElementById('fallbackAd').style.display = 'block';
+                }
+            }, 2000);
+        }
+
+        function trackPageView() {
+            // 페이지 체류 시간 추적
+            const startTime = Date.now();
+            
+            window.addEventListener('beforeunload', () => {
+                const endTime = Date.now();
+                const duration = endTime - startTime;
+                
+                // 체류 시간을 로컬 스토리지에 저장 (추후 분석 용도)
+                localStorage.setItem('adPageDuration', duration);
+            });
+        }
+
+        // 페이지 이탈 방지
+        window.addEventListener('beforeunload', function(e) {
+            if (!hasViewedAd) {
+                e.preventDefault();
+                e.returnValue = '';
+                return '광고를 확인한 후 결과를 볼 수 있습니다.';
+            }
+        });
+
+        // 광고 클릭 추적
+        document.addEventListener('click', function(e) {
+            if (e.target.closest('.adsbygoogle') || e.target.closest('.ad-placeholder')) {
+                // 광고 클릭 이벤트 추적
+                console.log('Ad clicked');
+                
+                // Google Analytics 등에 이벤트 전송
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'ad_click', {
+                        'ad_type': 'adsense',
+                        'page_location': window.location.href
+                    });
+                }
+            }
+        });
+    </script>
+</body>
+</html>

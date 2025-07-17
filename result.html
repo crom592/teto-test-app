@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="pageTitle">나는 에겐남! - 에겐테토 테스트 결과</title>
+    <meta name="description" id="pageDescription" content="에겐남·테토녀 심리 테스트 결과를 확인하고 SNS에 공유해보세요">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    
+    <!-- 동적 메타 태그 -->
+    <meta property="og:title" id="ogTitle" content="나는 에겐남! | 에겐남·테토녀 테스트">
+    <meta property="og:description" id="ogDescription" content="내 감정/주도 성향은? 재미로 보는 #에겐테토 테스트">
+    <meta property="og:image" id="ogImage" content="https://your-domain.com/assets/result-egen-male.jpg">
+    <meta property="og:url" id="ogUrl" content="https://your-domain.com/result.html?type=egen-male">
+    
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" id="twitterTitle" content="나는 에겐남! | 에겐남·테토녀 테스트">
+    <meta name="twitter:description" id="twitterDescription" content="내 감정/주도 성향은? 재미로 보는 #에겐테토 테스트">
+    <meta name="twitter:image" id="twitterImage" content="https://your-domain.com/assets/result-egen-male.jpg">
+</head>
+<body class="result-page">
+    <header>
+        <nav>
+            <div class="nav-container">
+                <h1 class="logo"><a href="index.html">에겐테토</a></h1>
+                <div class="result-nav">
+                    <a href="quiz.html" class="nav-link">다시 테스트</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="result-container">
+        <!-- 결과 로딩 -->
+        <div class="result-loading" id="resultLoading">
+            <div class="loading-spinner"></div>
+            <p>결과를 분석하는 중...</p>
+        </div>
+
+        <!-- 결과 콘텐츠 -->
+        <div class="result-content" id="resultContent" style="display: none;">
+            <div class="result-header">
+                <div class="result-badge" id="resultBadge">
+                    <span class="result-emoji" id="resultEmoji">💝</span>
+                    <span class="result-title" id="resultTitle">에겐남</span>
+                </div>
+                <h2 class="result-subtitle" id="resultSubtitle">차분하고 섬세한 감성의 소유자</h2>
+            </div>
+
+            <div class="result-description">
+                <div class="description-card">
+                    <h3>💫 당신의 핵심 특성</h3>
+                    <p id="resultDescription">
+                        차분하고 섬세한 감성이 돋보이는 당신! 주변을 다정하게 챙기고, 감정 공감이 탁월한 유형이에요. 
+                        갈등 상황에서도 부드럽고 평화로운 해결을 선호하죠. 가끔 우유부단할 수 있는데, 그 다정함이 매력입니다.
+                    </p>
+                </div>
+
+                <div class="celebrities-card">
+                    <h3>🌟 유명인 예시</h3>
+                    <div class="celebrities-list" id="celebritiesList">
+                        <div class="celebrity-item">원빈</div>
+                        <div class="celebrity-item">차은우</div>
+                        <div class="celebrity-item">정해인</div>
+                    </div>
+                    <p class="celebrities-note" id="celebritiesNote">'잘생겼는데 착해 보이는 남사친' 이미지</p>
+                </div>
+
+                <div class="compatibility-card">
+                    <h3>💕 궁합 분석</h3>
+                    <div class="compatibility-grid" id="compatibilityGrid">
+                        <div class="compatibility-item best">
+                            <div class="compatibility-type">에겐남 ↔ 테토녀</div>
+                            <div class="compatibility-rating">⭐⭐⭐⭐⭐</div>
+                            <div class="compatibility-desc">보완형 조화 – 부드러움과 추진력의 균형</div>
+                        </div>
+                        <div class="compatibility-item good">
+                            <div class="compatibility-type">에겐남 ↔ 에겐녀</div>
+                            <div class="compatibility-rating">⭐⭐⭐⭐</div>
+                            <div class="compatibility-desc">감성 공감형 – 서로 편안하나 결론이 늦을 수 있음</div>
+                        </div>
+                        <div class="compatibility-item average">
+                            <div class="compatibility-type">에겐남 ↔ 테토남</div>
+                            <div class="compatibility-rating">⭐⭐⭐</div>
+                            <div class="compatibility-desc">서로 다른 접근 방식으로 균형 필요</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="result-actions">
+                <div class="share-section">
+                    <h3>📤 결과 공유하기</h3>
+                    <div class="share-buttons">
+                        <button class="share-btn kakao" onclick="shareKakao()">
+                            <span class="share-icon">💬</span>
+                            <span class="share-text">카카오톡</span>
+                        </button>
+                        <button class="share-btn instagram" onclick="shareInstagram()">
+                            <span class="share-icon">📸</span>
+                            <span class="share-text">인스타그램</span>
+                        </button>
+                        <button class="share-btn twitter" onclick="shareTwitter()">
+                            <span class="share-icon">🐦</span>
+                            <span class="share-text">트위터</span>
+                        </button>
+                        <button class="share-btn link" onclick="copyLink()">
+                            <span class="share-icon">🔗</span>
+                            <span class="share-text">링크 복사</span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="action-btn primary" onclick="retakeTest()">
+                        🔄 다시 테스트하기
+                    </button>
+                    <button class="action-btn secondary" onclick="goToHome()">
+                        🏠 홈으로 가기
+                    </button>
+                </div>
+            </div>
+
+            <!-- 추가 광고 영역 -->
+            <div class="result-ad-section">
+                <div class="ad-container">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
+                            crossorigin="anonymous"></script>
+                    <ins class="adsbygoogle"
+                         style="display:block"
+                         data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
+                         data-ad-slot="YOUR_RESULT_AD_SLOT_ID"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                        (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>에겐테토</h3>
+                    <p>재미있는 심리 테스트로 나를 알아가는 시간</p>
+                </div>
+                <div class="footer-section">
+                    <h4>더 많은 테스트</h4>
+                    <ul>
+                        <li><a href="quiz.html">에겐테토 테스트</a></li>
+                        <li><a href="#compatibility">궁합 테스트</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 에겐테토. All rights reserved.</p>
+                <p class="disclaimer">이 테스트는 재미를 위한 것이며 과학적 근거는 없습니다.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 결과 데이터 정의
+        const resultData = {
+            'E남': {
+                title: '에겐남',
+                emoji: '💝',
+                subtitle: '차분하고 섬세한 감성의 소유자',
+                description: '차분하고 섬세한 감성이 돋보이는 당신! 주변을 다정하게 챙기고, 감정 공감이 탁월한 유형이에요. 갈등 상황에서도 부드럽고 평화로운 해결을 선호하죠. 가끔 우유부단할 수 있는데, 그 다정함이 매력입니다.',
+                celebrities: ['원빈', '차은우', '정해인'],
+                celebritiesNote: '\'잘생겼는데 착해 보이는 남사친\' 이미지',
+                compatibility: [
+                    { type: '에겐남 ↔ 테토녀', rating: '⭐⭐⭐⭐⭐', desc: '보완형 조화 – 부드러움과 추진력의 균형', level: 'best' },
+                    { type: '에겐남 ↔ 에겐녀', rating: '⭐⭐⭐⭐', desc: '감성 공감형 – 서로 편안하나 결론이 늦을 수 있음', level: 'good' },
+                    { type: '에겐남 ↔ 테토남', rating: '⭐⭐⭐', desc: '서로 다른 접근 방식으로 균형 필요', level: 'average' }
+                ],
+                hashtags: ['#에겐남', '#감성남', '#섬세함', '#공감능력', '#다정함']
+            },
+            'E녀': {
+                title: '에겐녀',
+                emoji: '🌺',
+                subtitle: '감정에 민감하고 배려심 깊은 유형',
+                description: '감정에 민감하고 공기의 흐름을 잘 읽어요. 섬세한 배려와 부드러운 소통이 장점이며, 갈등보다는 조화를 중시하죠. 패션도 러블리·클래식한 분위기로 정돈된 감성파입니다.',
+                celebrities: ['수지', '박보영', '장원영'],
+                celebritiesNote: '부드럽고 섬세한 여성 감성 대표',
+                compatibility: [
+                    { type: '에겐녀 ↔ 테토남', rating: '⭐⭐⭐⭐⭐', desc: '보호본능 – 세심함과 안정감이 주는 조합', level: 'best' },
+                    { type: '에겐녀 ↔ 에겐남', rating: '⭐⭐⭐⭐', desc: '감성 공감형 – 서로 편안하나 결론이 늦을 수 있음', level: 'good' },
+                    { type: '에겐녀 ↔ 테토녀', rating: '⭐⭐⭐', desc: '서로 다른 에너지로 보완 관계', level: 'average' }
+                ],
+                hashtags: ['#에겐녀', '#감성녀', '#배려심', '#섬세함', '#조화']
+            },
+            'T남': {
+                title: '테토남',
+                emoji: '🔥',
+                subtitle: '당당하고 리더십이 넘치는 유형',
+                description: '당당하고 리더십이 넘치는 유형! 주도적인 결정과 직설적인 표현으로 듬직한 신뢰감을 주지만, 가끔은 \'왜 그렇게 했어?\'라는 직구가 부담으로 느껴질 수도 있어요.',
+                celebrities: ['민규', '김종국', '옥택연', '주연'],
+                celebritiesNote: '강인한 리더십 대표',
+                compatibility: [
+                    { type: '테토남 ↔ 에겐녀', rating: '⭐⭐⭐⭐⭐', desc: '보호본능 – 세심함과 안정감이 주는 조합', level: 'best' },
+                    { type: '테토남 ↔ 테토녀', rating: '⭐⭐⭐⭐', desc: '실행력 콤비 – 파워풀하지만 갈등 시 부딪힐 수 있음', level: 'good' },
+                    { type: '테토남 ↔ 에겐남', rating: '⭐⭐⭐', desc: '서로 다른 접근 방식으로 균형 필요', level: 'average' }
+                ],
+                hashtags: ['#테토남', '#리더십', '#주도적', '#직설적', '#신뢰감']
+            },
+            'T녀': {
+                title: '테토녀',
+                emoji: '⚡',
+                subtitle: '독립적이고 솔직한 추진형',
+                description: '독립적이고 솔직한 추진형! 자기주관이 강하고 사회적 도전을 즐기며, 연애에서도 주도적으로 다가가는 스타일입니다. 힙하고 스포티한 패션이 잘 어울려요.',
+                celebrities: ['이효리', '지젤(에스파)', '제니', '이영지'],
+                celebritiesNote: '솔직하고 주도적인 여성 이미지',
+                compatibility: [
+                    { type: '테토녀 ↔ 에겐남', rating: '⭐⭐⭐⭐⭐', desc: '보완형 조화 – 부드러움과 추진력의 균형', level: 'best' },
+                    { type: '테토녀 ↔ 테토남', rating: '⭐⭐⭐⭐', desc: '실행력 콤비 – 파워풀하지만 갈등 시 부딪힐 수 있음', level: 'good' },
+                    { type: '테토녀 ↔ 에겐녀', rating: '⭐⭐⭐', desc: '서로 다른 에너지로 보완 관계', level: 'average' }
+                ],
+                hashtags: ['#테토녀', '#독립적', '#솔직함', '#추진력', '#주도적']
+            }
+        };
+
+        let currentResult = null;
+
+        // 페이지 로드 시 결과 표시
+        window.onload = function() {
+            // 광고 시청 확인
+            const adViewed = localStorage.getItem('adViewed');
+            if (!adViewed) {
+                window.location.href = 'ads.html';
+                return;
+            }
+
+            // 테스트 결과 가져오기
+            const testResult = localStorage.getItem('testResult');
+            if (!testResult) {
+                window.location.href = 'quiz.html';
+                return;
+            }
+
+            const result = JSON.parse(testResult);
+            currentResult = result;
+
+            // 결과 표시
+            setTimeout(() => {
+                displayResult(result);
+            }, 1500);
+        };
+
+        function displayResult(result) {
+            const resultType = result.type;
+            const data = resultData[resultType];
+
+            if (!data) {
+                console.error('Result data not found for type:', resultType);
+                return;
+            }
+
+            // 결과 콘텐츠 업데이트
+            document.getElementById('resultEmoji').textContent = data.emoji;
+            document.getElementById('resultTitle').textContent = data.title;
+            document.getElementById('resultSubtitle').textContent = data.subtitle;
+            document.getElementById('resultDescription').textContent = data.description;
+
+            // 유명인 업데이트
+            const celebritiesList = document.getElementById('celebritiesList');
+            celebritiesList.innerHTML = '';
+            data.celebrities.forEach(celebrity => {
+                const item = document.createElement('div');
+                item.className = 'celebrity-item';
+                item.textContent = celebrity;
+                celebritiesList.appendChild(item);
+            });
+            document.getElementById('celebritiesNote').textContent = data.celebritiesNote;
+
+            // 궁합 업데이트
+            const compatibilityGrid = document.getElementById('compatibilityGrid');
+            compatibilityGrid.innerHTML = '';
+            data.compatibility.forEach(compat => {
+                const item = document.createElement('div');
+                item.className = `compatibility-item ${compat.level}`;
+                item.innerHTML = `
+                    <div class="compatibility-type">${compat.type}</div>
+                    <div class="compatibility-rating">${compat.rating}</div>
+                    <div class="compatibility-desc">${compat.desc}</div>
+                `;
+                compatibilityGrid.appendChild(item);
+            });
+
+            // 메타 태그 업데이트
+            updateMetaTags(data, resultType);
+
+            // 결과 표시
+            document.getElementById('resultLoading').style.display = 'none';
+            document.getElementById('resultContent').style.display = 'block';
+        }
+
+        function updateMetaTags(data, resultType) {
+            const title = `나는 ${data.title}! - 에겐테토 테스트 결과`;
+            const description = `${data.subtitle} - ${data.description.substring(0, 100)}...`;
+            const url = `${window.location.origin}/result.html?type=${resultType}`;
+
+            document.title = title;
+            document.getElementById('pageTitle').textContent = title;
+            document.getElementById('pageDescription').setAttribute('content', description);
+            
+            document.getElementById('ogTitle').setAttribute('content', title);
+            document.getElementById('ogDescription').setAttribute('content', description);
+            document.getElementById('ogUrl').setAttribute('content', url);
+            
+            document.getElementById('twitterTitle').setAttribute('content', title);
+            document.getElementById('twitterDescription').setAttribute('content', description);
+        }
+
+        // 공유 기능
+        function shareKakao() {
+            const data = resultData[currentResult.type];
+            const shareText = `나는 ${data.title}! ${data.subtitle}\n\n${data.hashtags.join(' ')}\n\n나도 테스트해보기: ${window.location.origin}`;
+            
+            if (navigator.share) {
+                navigator.share({
+                    title: `나는 ${data.title}!`,
+                    text: shareText,
+                    url: window.location.href
+                });
+            } else {
+                copyToClipboard(shareText);
+                alert('카카오톡 공유 텍스트가 복사되었습니다!');
+            }
+        }
+
+        function shareInstagram() {
+            const data = resultData[currentResult.type];
+            const shareText = `나는 ${data.title}! ${data.subtitle}\n\n${data.hashtags.join(' ')}\n\n나도 테스트해보기: ${window.location.origin}`;
+            
+            copyToClipboard(shareText);
+            alert('인스타그램 공유 텍스트가 복사되었습니다! 인스타그램에서 붙여넣기하세요.');
+        }
+
+        function shareTwitter() {
+            const data = resultData[currentResult.type];
+            const shareText = `나는 ${data.title}! ${data.subtitle}\n\n${data.hashtags.join(' ')}\n\n나도 테스트해보기:`;
+            const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(window.location.href)}`;
+            
+            window.open(url, '_blank');
+        }
+
+        function copyLink() {
+            copyToClipboard(window.location.href);
+            alert('링크가 복사되었습니다!');
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        function retakeTest() {
+            localStorage.removeItem('testResult');
+            localStorage.removeItem('adViewed');
+            window.location.href = 'quiz.html';
+        }
+
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+</html>
