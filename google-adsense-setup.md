@@ -16,33 +16,26 @@
 
 ## 2. 코드 구현 방법
 
-### 2.1 Publisher ID 교체
+### 2.1 Publisher ID 교체 ✅ 완료
 각 HTML 파일에서 다음 부분을 실제 Publisher ID로 교체:
 
 ```html
-<!-- 현재 코드 -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-YOUR_PUBLISHER_ID"
-        crossorigin="anonymous"></script>
-
-<!-- 교체 예시 -->
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456"
+<!-- 현재 적용된 코드 -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5534320609992391"
         crossorigin="anonymous"></script>
 ```
 
-### 2.2 광고 슬롯 ID 교체
+### 2.2 광고 슬롯 ID 교체 ⚠️ 임시값 적용
 각 광고 유닛의 data-ad-slot 값을 실제 슬롯 ID로 교체:
 
 ```html
-<!-- 현재 코드 -->
+<!-- 현재 적용된 코드 (임시값) -->
 <ins class="adsbygoogle"
-     data-ad-client="ca-pub-YOUR_PUBLISHER_ID"
-     data-ad-slot="YOUR_AD_SLOT_ID">
-
-<!-- 교체 예시 -->
-<ins class="adsbygoogle"
-     data-ad-client="ca-pub-1234567890123456"
-     data-ad-slot="9876543210">
+     data-ad-client="ca-pub-5534320609992391"
+     data-ad-slot="1234567890">  <!-- 실제 슬롯 ID로 교체 필요 -->
 ```
+
+**중요**: 현재 슬롯 ID는 임시값입니다. AdSense에서 실제 광고 유닛 생성 후 교체하세요.
 
 ## 3. 광고 유닛 생성
 

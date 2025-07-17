@@ -5,7 +5,10 @@
       "Bash(gh auth:*)",
       "Bash(git init:*)",
       "Bash(gh repo create:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git remote add:*)",
+      "Bash(git push:*)",
+      "Bash(gh repo view:*)"
     ],
     "deny": []
   }
