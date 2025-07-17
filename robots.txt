@@ -23,9 +23,13 @@ Disallow: /*.bak
 Disallow: /*~
 
 # 사이트맵 위치 명시
-Sitemap: https://your-domain.com/sitemap.xml
+Sitemap: https://crom592.github.io/teto-test-app/sitemap.xml
 
-# 특정 검색엔진 설정
+# Google AdSense 봇 허용
+User-agent: Mediapartners-Google
+Allow: /
+
+# 검색엔진 설정
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
