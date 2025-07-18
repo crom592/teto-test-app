@@ -12,9 +12,6 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5534320609992391"
             crossorigin="anonymous"></script>
     
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-config.js"></script>
     
     <!-- 동적 메타 태그 -->
     <meta property="og:title" id="ogTitle" content="나는 에겐남! | 에겐남·테토녀 테스트">
@@ -329,23 +326,6 @@
             document.getElementById('resultLoading').style.display = 'none';
             document.getElementById('resultContent').style.display = 'block';
             
-            // Supabase에 결과 저장 (로그인한 사용자만)
-            const testId = currentResult.testId || 'egen-teto';
-            saveResultToSupabase(resultType, scores, testId);
-        }
-        
-        async function saveResultToSupabase(resultType, scores, testId = 'egen-teto') {
-            // 로그인한 사용자인지 확인
-            if (supabaseAuth && supabaseAuth.getCurrentUser()) {
-                try {
-                    const result = await supabaseData.saveTestResult(testId, resultType, scores);
-                    if (result.success) {
-                        console.log('결과가 저장되었습니다');
-                    }
-                } catch (error) {
-                    console.error('결과 저장 실패:', error);
-                }
-            }
         }
 
         function updateMetaTags(data, resultType) {

@@ -16,9 +16,6 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5534320609992391"
             crossorigin="anonymous"></script>
     
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-config.js"></script>
 </head>
 <body class="quiz-page">
     <header>
@@ -332,25 +329,11 @@
                 const testId = urlParams.get('test') || 'egen-teto';
                 currentTestId = testId;
                 
-                // Supabase에서 테스트 데이터 가져오기
-                if (supabaseData) {
-                    const result = await supabaseData.getAllTests();
-                    if (result.success && result.data) {
-                        testData = result.data.find(test => test.test_id === testId);
-                        if (testData && testData.questions && testData.questions.length > 0) {
-                            questions = testData.questions;
-                            console.log('테스트 데이터 로드 성공:', testData.title);
-                            return;
-                        }
-                    }
-                }
-                
-                // 폴백: 기본 에겐테토 질문 사용
-                console.log('기본 질문 데이터 사용');
+                // 현재는 기본 에겐테토 질문만 사용
+                console.log('테스트 ID:', testId);
                 
             } catch (error) {
                 console.error('테스트 데이터 로드 실패:', error);
-                // 폴백 데이터는 이미 questions 배열에 정의되어 있음
             }
         }
         

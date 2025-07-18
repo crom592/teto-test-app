@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>테토테스트 - 재미있는 심리테스트 모음</title>
+    <title>마인드테스트 - 재미있는 심리테스트 모음</title>
     <meta name="description" content="에겐남 테토녀 테스트부터 다양한 심리테스트까지! 나를 알아가는 재미있는 시간">
     <meta name="keywords" content="심리테스트, 성격테스트, 에겐남, 테토녀, 연애테스트, 재미테스트">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://teto-test-app.pages.dev/">
-    <meta property="og:title" content="테토테스트 - 재미있는 심리테스트 모음">
+    <meta property="og:title" content="마인드테스트 - 재미있는 심리테스트 모음">
     <meta property="og:description" content="에겐남 테토녀 테스트부터 다양한 심리테스트까지!">
     <meta property="og:image" content="https://teto-test-app.pages.dev/assets/og-image.jpg">
     
@@ -24,9 +24,6 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5534320609992391"
             crossorigin="anonymous"></script>
     
-    <!-- Supabase -->
-    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-    <script src="js/supabase-config.js"></script>
 </head>
 <body>
     <header class="site-header">
@@ -34,7 +31,7 @@
             <div class="logo-area">
                 <h1 class="site-logo">
                     <img src="assets/icons/brain.svg" alt="" class="logo-icon">
-                    <span class="logo-text">테토테스트</span>
+                    <span class="logo-text">마인드테스트</span>
                 </h1>
             </div>
             <nav class="main-nav">
@@ -59,41 +56,6 @@
                     <span class="nav-text">심리</span>
                 </button>
             </nav>
-            <div class="auth-section">
-                <!-- 로그인/회원가입 버튼 -->
-                <div id="authButtons" class="auth-buttons">
-                    <button class="auth-btn login-btn" onclick="showAuthModal('login')">
-                        <img src="assets/icons/user.svg" alt="" class="auth-icon">
-                        <span>로그인</span>
-                    </button>
-                    <button class="auth-btn signup-btn" onclick="showAuthModal('signup')">
-                        <span>회원가입</span>
-                    </button>
-                </div>
-                <!-- 사용자 메뉴 -->
-                <div id="userMenu" class="user-menu" style="display: none;">
-                    <div class="user-info" onclick="toggleUserDropdown()">
-                        <img src="assets/icons/user.svg" alt="" class="user-avatar">
-                        <span id="userEmail" class="user-email"></span>
-                        <img src="assets/icons/arrow-down.svg" alt="" class="dropdown-arrow">
-                    </div>
-                    <div id="userDropdown" class="user-dropdown">
-                        <a href="dashboard.html" class="dropdown-item">
-                            <img src="assets/icons/dashboard.svg" alt="">
-                            <span>내 대시보드</span>
-                        </a>
-                        <a href="history.html" class="dropdown-item">
-                            <img src="assets/icons/history.svg" alt="">
-                            <span>테스트 기록</span>
-                        </a>
-                        <hr class="dropdown-divider">
-                        <button class="dropdown-item logout-item" onclick="handleLogout()">
-                            <img src="assets/icons/logout.svg" alt="">
-                            <span>로그아웃</span>
-                        </button>
-                    </div>
-                </div>
-            </div>
         </div>
     </header>
 
@@ -173,7 +135,7 @@
     <footer class="site-footer">
         <div class="footer-content">
             <div class="footer-info">
-                <p>© 2024 테토테스트. All rights reserved.</p>
+                <p>© 2025 마인드테스트. All rights reserved.</p>
                 <div class="footer-links">
                     <a href="privacy.html">개인정보처리방침</a>
                     <a href="contact.html">문의하기</a>
@@ -184,94 +146,12 @@
         </div>
     </footer>
 
-    <!-- 인증 모달 -->
-    <div id="authModal" class="auth-modal">
-        <div class="modal-content">
-            <button class="modal-close" onclick="closeAuthModal()">×</button>
-            
-            <!-- 로그인 폼 -->
-            <div id="loginForm" class="auth-form">
-                <h2 class="auth-title">로그인</h2>
-                <p class="auth-subtitle">테스트 결과를 저장하고 통계를 확인하세요</p>
-                
-                <form onsubmit="handleLogin(event)">
-                    <div class="form-group">
-                        <label for="loginEmail">이메일</label>
-                        <input type="email" id="loginEmail" required placeholder="your@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="loginPassword">비밀번호</label>
-                        <input type="password" id="loginPassword" required placeholder="••••••••">
-                    </div>
-                    <button type="submit" class="auth-submit-btn">로그인</button>
-                </form>
-                
-                <div class="auth-divider">
-                    <span>또는</span>
-                </div>
-                
-                <button class="social-auth-btn google" onclick="signInWithGoogle()">
-                    <img src="assets/icons/google.svg" alt="">
-                    <span>Google로 계속하기</span>
-                </button>
-                
-                <p class="auth-switch">
-                    계정이 없으신가요? 
-                    <button onclick="switchAuthMode('signup')">회원가입</button>
-                </p>
-            </div>
-            
-            <!-- 회원가입 폼 -->
-            <div id="signupForm" class="auth-form" style="display: none;">
-                <h2 class="auth-title">회원가입</h2>
-                <p class="auth-subtitle">무료로 가입하고 모든 기능을 이용하세요</p>
-                
-                <form onsubmit="handleSignup(event)">
-                    <div class="form-group">
-                        <label for="signupEmail">이메일</label>
-                        <input type="email" id="signupEmail" required placeholder="your@email.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="signupPassword">비밀번호</label>
-                        <input type="password" id="signupPassword" required placeholder="최소 6자 이상">
-                        <small class="form-hint">최소 6자 이상 입력해주세요</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="signupUsername">닉네임 (선택)</label>
-                        <input type="text" id="signupUsername" placeholder="닉네임">
-                    </div>
-                    <button type="submit" class="auth-submit-btn">회원가입</button>
-                </form>
-                
-                <div class="auth-divider">
-                    <span>또는</span>
-                </div>
-                
-                <button class="social-auth-btn google" onclick="signInWithGoogle()">
-                    <img src="assets/icons/google.svg" alt="">
-                    <span>Google로 계속하기</span>
-                </button>
-                
-                <p class="auth-switch">
-                    이미 계정이 있으신가요? 
-                    <button onclick="switchAuthMode('login')">로그인</button>
-                </p>
-            </div>
-            
-            <!-- 로딩 상태 -->
-            <div id="authLoading" class="auth-loading" style="display: none;">
-                <div class="loading-spinner"></div>
-                <p>처리 중...</p>
-            </div>
-        </div>
-    </div>
 
     <script>
         // 테스트 데이터 로드 및 렌더링
         let allTests = [];
         let currentCategory = 'all';
         let currentSort = 'latest';
-        let statsSubscription = null;
 
         // 테스트 카드 HTML 생성
         function createTestCard(test) {
@@ -326,40 +206,6 @@
         // 테스트 데이터 로드
         async function loadTests() {
             try {
-                // Supabase에서 테스트 데이터 가져오기
-                if (supabaseData) {
-                    const result = await supabaseData.getAllTests();
-                    if (result.success && result.data) {
-                        allTests = result.data.map(test => ({
-                            id: test.test_id,
-                            title: test.title,
-                            subtitle: test.subtitle,
-                            category: test.category,
-                            categoryName: test.category_name,
-                            categoryIcon: test.category_icon,
-                            thumbnailIcon: test.thumbnail_icon,
-                            duration: test.duration,
-                            participants: 0, // 통계에서 업데이트됨
-                            url: test.test_id === 'egen-teto' ? 'quiz.html' : `quiz.html?test=${test.test_id}`,
-                            isNew: test.is_new,
-                            isHot: test.is_hot
-                        }));
-                        
-                        // 각 테스트의 통계 데이터 가져오기
-                        for (let test of allTests) {
-                            const stats = await supabaseData.getTestStatistics(test.id);
-                            if (stats.success && stats.data) {
-                                test.participants = stats.data.total_participants || 0;
-                            }
-                        }
-                        
-                        renderTests();
-                        renderPopularSlider();
-                        return;
-                    }
-                }
-                
-                // 폴백: JSON 파일에서 로드
                 const response = await fetch('data/tests.json');
                 const data = await response.json();
                 allTests = data.tests;
@@ -374,7 +220,7 @@
                         id: "egen-teto",
                         title: "에겐남·테토녀 테스트",
                         subtitle: "나는 감성적인 에겐? 주도적인 테토?",
-                        thumbnailIcon: "assets/icons/test-brain.svg",
+                        thumbnailIcon: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop",
                         category: "personality",
                         categoryName: "성격유형",
                         categoryIcon: "assets/icons/mask.svg",
@@ -445,212 +291,8 @@
         // 페이지 로드 시 테스트 로드
         window.addEventListener('load', () => {
             loadTests();
-            loadRealtimeStats();
-        });
-        
-        // 실시간 통계 로드 및 구독
-        async function loadRealtimeStats() {
-            // 에겐테토 테스트 통계 가져오기
-            if (supabaseData) {
-                const stats = await supabaseData.getTestStatistics('egen-teto');
-                if (stats.success && stats.data) {
-                    updateTestStats(stats.data);
-                }
-                
-                // 실시간 업데이트 구독
-                statsSubscription = supabaseData.subscribeToTestStats('egen-teto', (newStats) => {
-                    updateTestStats(newStats);
-                });
-            }
-        }
-        
-        // 통계 업데이트
-        function updateTestStats(stats) {
-            // 모든 테스트 카드에서 에겐테토 테스트 찾기
-            const testCards = document.querySelectorAll('.test-card');
-            testCards.forEach(card => {
-                const testId = card.getAttribute('data-test-id');
-                if (testId === 'egen-teto') {
-                    const participantElement = card.querySelector('.meta-text');
-                    if (participantElement && stats.total_participants) {
-                        // 숫자 애니메이션
-                        animateNumber(participantElement, stats.total_participants);
-                    }
-                }
-            });
-            
-            // 인기 슬라이더도 업데이트
-            const sliderCards = document.querySelectorAll('.slider-card');
-            sliderCards.forEach(card => {
-                const testId = card.getAttribute('data-test-id');
-                if (testId === 'egen-teto') {
-                    const participantElement = card.querySelector('.slider-participants');
-                    if (participantElement && stats.total_participants) {
-                        participantElement.textContent = `${stats.total_participants.toLocaleString()}명 참여`;
-                    }
-                }
-            });
-        }
-        
-        // 숫자 애니메이션
-        function animateNumber(element, targetNumber) {
-            const currentText = element.textContent;
-            const currentNumber = parseInt(currentText.replace(/[^0-9]/g, '')) || 0;
-            const duration = 1000;
-            const steps = 30;
-            const increment = (targetNumber - currentNumber) / steps;
-            let step = 0;
-            
-            const timer = setInterval(() => {
-                step++;
-                const newNumber = Math.round(currentNumber + increment * step);
-                element.textContent = `${newNumber.toLocaleString()}명`;
-                
-                if (step >= steps) {
-                    clearInterval(timer);
-                    element.textContent = `${targetNumber.toLocaleString()}명`;
-                }
-            }, duration / steps);
-        }
-        
-        // 페이지 언로드 시 구독 해제
-        window.addEventListener('beforeunload', () => {
-            if (statsSubscription) {
-                statsSubscription.unsubscribe();
-            }
         });
 
-        // 인증 관련 함수들
-        function showAuthModal(mode) {
-            const modal = document.getElementById('authModal');
-            modal.style.display = 'flex';
-            switchAuthMode(mode);
-        }
-
-        function closeAuthModal() {
-            const modal = document.getElementById('authModal');
-            modal.style.display = 'none';
-        }
-
-        function switchAuthMode(mode) {
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-            
-            if (mode === 'login') {
-                loginForm.style.display = 'block';
-                signupForm.style.display = 'none';
-            } else {
-                loginForm.style.display = 'none';
-                signupForm.style.display = 'block';
-            }
-        }
-
-        async function handleLogin(event) {
-            event.preventDefault();
-            
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            showAuthLoading(true);
-            
-            const result = await supabaseAuth.signIn(email, password);
-            
-            showAuthLoading(false);
-            
-            if (result.success) {
-                closeAuthModal();
-                showNotification('로그인 성공!', 'success');
-            } else {
-                showNotification(result.error || '로그인에 실패했습니다', 'error');
-            }
-        }
-
-        async function handleSignup(event) {
-            event.preventDefault();
-            
-            const email = document.getElementById('signupEmail').value;
-            const password = document.getElementById('signupPassword').value;
-            const username = document.getElementById('signupUsername').value;
-            
-            showAuthLoading(true);
-            
-            const result = await supabaseAuth.signUp(email, password, { username });
-            
-            showAuthLoading(false);
-            
-            if (result.success) {
-                closeAuthModal();
-                showNotification('회원가입 성공! 이메일을 확인해주세요.', 'success');
-            } else {
-                showNotification(result.error || '회원가입에 실패했습니다', 'error');
-            }
-        }
-
-        async function handleLogout() {
-            const result = await supabaseAuth.signOut();
-            
-            if (result.success) {
-                showNotification('로그아웃되었습니다', 'info');
-                // 사용자 드롭다운 숨기기
-                document.getElementById('userDropdown').style.display = 'none';
-            }
-        }
-
-        function showAuthLoading(show) {
-            const loading = document.getElementById('authLoading');
-            const loginForm = document.getElementById('loginForm');
-            const signupForm = document.getElementById('signupForm');
-            
-            if (show) {
-                loading.style.display = 'flex';
-                loginForm.style.display = 'none';
-                signupForm.style.display = 'none';
-            } else {
-                loading.style.display = 'none';
-            }
-        }
-
-        function showNotification(message, type = 'info') {
-            // 간단한 알림 표시 (나중에 더 나은 UI로 개선 가능)
-            const notification = document.createElement('div');
-            notification.className = `notification notification-${type}`;
-            notification.textContent = message;
-            
-            document.body.appendChild(notification);
-            
-            setTimeout(() => {
-                notification.classList.add('show');
-            }, 10);
-            
-            setTimeout(() => {
-                notification.classList.remove('show');
-                setTimeout(() => notification.remove(), 300);
-            }, 3000);
-        }
-
-        function toggleUserDropdown() {
-            const dropdown = document.getElementById('userDropdown');
-            dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
-        }
-
-        // 모달 외부 클릭 시 닫기
-        window.onclick = function(event) {
-            const modal = document.getElementById('authModal');
-            if (event.target === modal) {
-                closeAuthModal();
-            }
-            
-            // 드롭다운 외부 클릭 시 닫기
-            const userMenu = document.getElementById('userMenu');
-            if (!userMenu.contains(event.target)) {
-                document.getElementById('userDropdown').style.display = 'none';
-            }
-        }
-
-        // Google 로그인 (나중에 구현)
-        async function signInWithGoogle() {
-            showNotification('Google 로그인은 준비 중입니다', 'info');
-        }
     </script>
 </body>
 </html>
