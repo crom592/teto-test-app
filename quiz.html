@@ -5,12 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>에겐테토 심리 테스트 - 질문 답변</title>
     <meta name="description" content="에겐남·테토녀 심리 테스트 질문에 답하고 나의 성향을 알아보세요">
+    
+    <!-- Pretendard Font -->
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+    
     <link rel="stylesheet" href="css/styles.css">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     
     <!-- Google AdSense -->
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5534320609992391"
             crossorigin="anonymous"></script>
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
 </head>
 <body class="quiz-page">
     <header>
@@ -80,9 +88,11 @@
         let selectedGender = '';
         let answers = []; // 각 질문에 대한 답변 저장
         let quizStarted = false;
+        let currentTestId = 'egen-teto'; // 기본 테스트 ID
+        let testData = null; // 테스트 데이터 저장
         
-        // 12가지 질문 데이터
-        const questions = [
+        // 질문 데이터 (Supabase에서 로드되거나 폴백 데이터)
+        let questions = [
             {
                 question: "친구가 고민을 털어놓을 때 나의 첫 반응은?",
                 answers: [
@@ -284,7 +294,10 @@
             const result = {
                 scores: scores,
                 gender: selectedGender,
-                type: determineType()
+                type: determineType(),
+                testId: currentTestId,
+                answers: answers,
+                timestamp: new Date().toISOString()
             };
             
             localStorage.setItem('testResult', JSON.stringify(result));
@@ -311,8 +324,41 @@
             return dominantTrait + (selectedGender === 'male' ? '남' : '녀');
         }
 
+        // 테스트 데이터 로드
+        async function loadTestData() {
+            try {
+                // URL에서 테스트 ID 가져오기
+                const urlParams = new URLSearchParams(window.location.search);
+                const testId = urlParams.get('test') || 'egen-teto';
+                currentTestId = testId;
+                
+                // Supabase에서 테스트 데이터 가져오기
+                if (supabaseData) {
+                    const result = await supabaseData.getAllTests();
+                    if (result.success && result.data) {
+                        testData = result.data.find(test => test.test_id === testId);
+                        if (testData && testData.questions && testData.questions.length > 0) {
+                            questions = testData.questions;
+                            console.log('테스트 데이터 로드 성공:', testData.title);
+                            return;
+                        }
+                    }
+                }
+                
+                // 폴백: 기본 에겐테토 질문 사용
+                console.log('기본 질문 데이터 사용');
+                
+            } catch (error) {
+                console.error('테스트 데이터 로드 실패:', error);
+                // 폴백 데이터는 이미 questions 배열에 정의되어 있음
+            }
+        }
+        
         // 페이지 로드 시 성별 선택 화면 표시
-        window.onload = function() {
+        window.onload = async function() {
+            // 테스트 데이터 로드
+            await loadTestData();
+            
             // 초기 상태 설정
             currentQuestion = 0;
             scores = { E: 0, T: 0 };

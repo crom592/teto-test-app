@@ -13,6 +13,9 @@
 - 💰 Google AdSense 광고 연동
 - 🚀 빠른 로딩 속도
 - ♿ 웹 접근성 준수
+- 🔐 Supabase 통합 (사용자 인증, 데이터 저장, 실시간 통계)
+- 📊 실시간 참여자 수 표시
+- 👤 개인화된 테스트 기록 저장
 
 ## 🏗️ 프로젝트 구조
 
@@ -21,6 +24,7 @@ teto-test-app/
 ├── index.html              # 메인 페이지 (테스트 목록)
 ├── quiz.html               # 에겐테토 테스트 페이지
 ├── result.html             # 결과 페이지
+├── dashboard.html          # 사용자 대시보드 (개발 예정)
 ├── about.html              # 소개 페이지
 ├── privacy.html            # 개인정보처리방침
 ├── contact.html            # 문의하기
@@ -30,10 +34,14 @@ teto-test-app/
 │   ├── styles.css          # 기존 스타일시트
 │   └── styles-new.css      # 새로운 메인 스타일
 ├── js/
-│   └── main.js             # 메인 JavaScript
+│   ├── main.js             # 메인 JavaScript
+│   └── supabase-config.js  # Supabase 설정 및 API
 ├── data/
 │   └── tests.json          # 테스트 데이터
 ├── assets/                 # 이미지 및 정적 파일
+│   └── icons/              # SVG 아이콘
+├── supabase/
+│   └── schema.sql          # 데이터베이스 스키마
 ├── CLAUDE.md               # 프로젝트 명세서
 ├── google-adsense-setup.md # AdSense 설정 가이드
 └── README.md               # 프로젝트 설명서
@@ -59,11 +67,23 @@ npx serve .
 
 ### 2. 배포 준비
 
+#### Supabase 설정
+1. [Supabase](https://supabase.com)에서 새 프로젝트 생성
+2. `supabase/schema.sql` 파일을 SQL Editor에서 실행
+3. `js/supabase-config.js`에서 다음 값 교체:
+   ```javascript
+   const SUPABASE_URL = 'YOUR_SUPABASE_URL';
+   const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+   ```
+4. Authentication > Providers에서 이메일 인증 활성화
+5. (선택사항) Google OAuth 설정
+
 #### Google AdSense 설정
 1. `google-adsense-setup.md` 가이드 참고
 2. Publisher ID 교체 필요한 파일:
-   - `ads.html` (line 17, 43, 63)
-   - `result.html` (line 305, 311)
+   - `index.html`
+   - `quiz.html`
+   - `result.html`
 3. 광고 슬롯 ID 교체
 
 #### 도메인 설정
@@ -80,10 +100,10 @@ npx serve .
 ## 📋 기능 설명
 
 ### 1. 테스트 플로우
-1. **메인 페이지** (`index.html`) - 소개 및 테스트 시작
-2. **퀴즈 페이지** (`quiz.html`) - 12개 질문 답변
-3. **광고 페이지** (`ads.html`) - 5초 광고 시청 후 결과 이동
-4. **결과 페이지** (`result.html`) - 유형 분석 결과 및 SNS 공유
+1. **메인 페이지** (`index.html`) - 테스트 목록 및 로그인
+2. **퀴즈 페이지** (`quiz.html`) - 성별 선택 후 12개 질문 답변
+3. **결과 페이지** (`result.html`) - 유형 분석 결과 및 SNS 공유
+4. **대시보드** (`dashboard.html`) - 개인 테스트 기록 확인 (로그인 필요)
 
 ### 2. 점수 계산 시스템
 - 각 질문마다 A(E형) / B(T형) 선택
@@ -91,17 +111,25 @@ npx serve .
 - T 점수 ≥ 7: 테토 우세
 - 성별 정보와 결합하여 최종 유형 결정
 
-### 3. 광고 시스템
-- 테스트 완료 후 광고 페이지 필수 경유
-- 5초 카운트다운 후 결과 확인 가능
+### 3. 사용자 시스템
+- 이메일/비밀번호 로그인
+- 테스트 결과 자동 저장 (로그인 시)
+- 개인 테스트 기록 조회
+- 실시간 참여자 수 표시
+
+### 4. 광고 시스템
 - Google AdSense 연동으로 수익 창출
+- 반응형 광고 배치
+- 사용자 경험 고려한 광고 위치
 
 ## 🎨 디자인 시스템
 
-### 색상 팔레트
-- **에겐(E)**: 파스텔톤 (#ff9a9e, #fda085)
-- **테토(T)**: 강렬한 색상 (#a18cd1, #667eea)
-- **메인 그라데이션**: `linear-gradient(135deg, #667eea 0%, #764ba2 100%)`
+### 색상 팔레트 (Mejiro University 테마)
+- **Primary**: #89C3EB (연한 파랑)
+- **Secondary**: #F4C6D0 (연한 분홍)
+- **Accent**: #A8D8B5 (연한 초록)
+- **Warm**: #F0E5D8 (연한 베이지)
+- **메인 그라데이션**: `linear-gradient(135deg, #89C3EB 0%, #F4C6D0 100%)`
 
 ### 타이포그래피
 - 메인 폰트: Pretendard
@@ -118,6 +146,13 @@ npx serve .
 - **HTML5**: 시맨틱 마크업
 - **CSS3**: Flexbox, Grid, 애니메이션
 - **Vanilla JavaScript**: ES6+, 로컬스토리지
+- **Pretendard**: 한국어 최적화 폰트
+
+### Backend
+- **Supabase**: PostgreSQL 데이터베이스
+- **Supabase Auth**: 사용자 인증
+- **Supabase Realtime**: 실시간 통계 업데이트
+- **Row Level Security**: 데이터 보안
 
 ### 성능 최적화
 - 이미지 지연 로딩
@@ -186,6 +221,9 @@ const resultData = {
 ## 🚨 배포 전 체크리스트
 
 ### 필수 사항
+- [ ] Supabase 프로젝트 설정
+- [ ] Supabase URL 및 API 키 교체
+- [ ] 데이터베이스 스키마 실행
 - [ ] Google AdSense Publisher ID 교체
 - [ ] 도메인 URL 교체
 - [ ] 개인정보처리방침 검토
@@ -198,6 +236,7 @@ const resultData = {
 - [ ] 404 페이지 생성
 - [ ] 성능 테스트 실행
 - [ ] 크로스 브라우저 테스트
+- [ ] Supabase Edge Functions 설정 (고급)
 
 ## 🔒 보안 고려사항
 

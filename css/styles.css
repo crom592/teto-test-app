@@ -398,7 +398,7 @@ main {
 
 /* 퀴즈 페이지 스타일 */
 .quiz-page {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #89C3EB 0%, #F4C6D0 100%);
     min-height: 100vh;
 }
 
@@ -428,7 +428,7 @@ main {
 }
 
 .progress-text {
-    color: #667eea;
+    color: #89C3EB;
     font-weight: bold;
     font-size: 0.9rem;
 }
@@ -474,13 +474,13 @@ main {
 }
 
 .question-number {
-    color: #667eea;
+    color: #89C3EB;
     font-weight: bold;
     margin-bottom: 1rem;
     font-size: 1.1rem;
     display: inline-block;
     padding: 0.5rem 1.5rem;
-    background: rgba(102, 126, 234, 0.1);
+    background: rgba(137, 195, 235, 0.1);
     border-radius: 20px;
 }
 
@@ -515,17 +515,17 @@ main {
 
 .answer-btn:hover {
     background: #e9ecef;
-    border-color: #667eea;
+    border-color: #89C3EB;
     transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 5px 15px rgba(137, 195, 235, 0.2);
 }
 
 .answer-btn.selected {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-    border-color: #667eea;
+    background: linear-gradient(135deg, #89C3EB, #F4C6D0);
+    border-color: #89C3EB;
     color: white;
     transform: scale(1.02);
-    box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 5px 20px rgba(137, 195, 235, 0.3);
 }
 
 .answer-btn::before {
@@ -550,7 +550,7 @@ main {
     display: inline-block;
     width: 30px;
     height: 30px;
-    background: #667eea;
+    background: #89C3EB;
     color: white;
     border-radius: 50%;
     line-height: 30px;
@@ -562,7 +562,7 @@ main {
 
 .answer-btn.selected .answer-letter {
     background: white;
-    color: #667eea;
+    color: #89C3EB;
 }
 
 .answer-text {
@@ -609,8 +609,8 @@ main {
 
 .gender-btn:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
-    border-color: #667eea;
+    box-shadow: 0 10px 30px rgba(137, 195, 235, 0.3);
+    border-color: #89C3EB;
 }
 
 .gender-btn:active {
@@ -662,12 +662,12 @@ main {
 }
 
 .next-btn {
-    background: #667eea;
+    background: #89C3EB;
     color: white;
 }
 
 .next-btn:not(:disabled):hover {
-    background: #5a6fd8;
+    background: #6fb1e0;
 }
 
 .nav-btn:disabled {
@@ -706,7 +706,7 @@ main {
 
 /* 광고 페이지 스타일 */
 .ads-page {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #89C3EB 0%, #F4C6D0 100%);
     min-height: 100vh;
 }
 
@@ -884,7 +884,7 @@ main {
 
 /* 결과 페이지 스타일 */
 .result-page {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #89C3EB 0%, #F4C6D0 100%);
     min-height: 100vh;
 }
 

@@ -13,7 +13,12 @@
       "Bash(curl:*)",
       "Bash(gh run list:*)",
       "Bash(gh run view:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "WebFetch(domain:poomang.com)",
+      "Bash(git reset:*)",
+      "Bash(grep:*)",
+      "Bash(mv:*)",
+      "WebFetch(domain:www.mejiro.ac.jp)"
     ],
     "deny": []
   }
