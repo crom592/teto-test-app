@@ -72,6 +72,12 @@
     </main>
 
     <script>
+        // 전역 변수 및 함수 선언
+        let currentQuestion = 0;
+        let scores = { E: 0, T: 0 };
+        let selectedGender = '';
+        let answers = []; // 각 질문에 대한 답변 저장
+        
         // 12가지 질문 데이터
         const questions = [
             {
@@ -160,11 +166,7 @@
             }
         ];
 
-        let currentQuestion = 0;
-        let scores = { E: 0, T: 0 };
-        let selectedGender = '';
-        let answers = []; // 각 질문에 대한 답변 저장
-
+        // 함수 정의
         function updateQuestion() {
             const question = questions[currentQuestion];
             
@@ -229,6 +231,7 @@
         }
 
         function nextQuestion() {
+            console.log('Next button clicked');
             // 답변이 선택되지 않았으면 진행 불가
             if (!answers[currentQuestion]) {
                 alert('답변을 선택해주세요.');
@@ -244,11 +247,18 @@
         }
 
         function previousQuestion() {
+            console.log('Previous button clicked');
             if (currentQuestion > 0) {
                 currentQuestion--;
                 updateQuestion();
             }
         }
+        
+        // 전역 스코프에 함수 노출
+        window.nextQuestion = nextQuestion;
+        window.previousQuestion = previousQuestion;
+        window.selectAnswer = selectAnswer;
+        window.selectGender = selectGender;
 
         function showGenderSelection() {
             document.getElementById('questionCard').style.display = 'none';
