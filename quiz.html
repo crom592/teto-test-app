@@ -218,7 +218,12 @@
                 btn.classList.remove('selected');
             });
             
-            event.target.closest('.answer-btn').classList.add('selected');
+            // event.target가 없을 수 있으므로 안전하게 처리
+            const clickedBtn = document.querySelector(`.answer-btn[data-type="${type}"]`);
+            if (clickedBtn) {
+                clickedBtn.classList.add('selected');
+            }
+            
             document.getElementById('nextBtn').disabled = false;
             
             // 자동으로 다음 질문으로 넘어가지 않도록 수정 (사용자가 다음 버튼을 눌러야 함)
@@ -299,7 +304,17 @@
 
         // 페이지 로드 시 첫 번째 질문 표시
         window.onload = function() {
+            // 초기 상태 설정
+            currentQuestion = 0;
+            scores = { E: 0, T: 0 };
+            answers = [];
+            
             updateQuestion();
+            
+            // 버튼 초기 상태 확인
+            console.log('Page loaded. Initial button states:');
+            console.log('Previous button disabled:', document.getElementById('prevBtn').disabled);
+            console.log('Next button disabled:', document.getElementById('nextBtn').disabled);
         };
     </script>
 </body>

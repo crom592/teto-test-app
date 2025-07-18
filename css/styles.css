@@ -519,6 +519,7 @@ main {
     font-size: 1rem;
     font-weight: bold;
     transition: all 0.3s;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .prev-btn {
@@ -526,18 +527,36 @@ main {
     color: white;
 }
 
+.prev-btn:not(:disabled):hover {
+    background: #5a6268;
+}
+
 .next-btn {
     background: #667eea;
     color: white;
 }
 
-.nav-btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
+.next-btn:not(:disabled):hover {
+    background: #5a6fd8;
 }
 
-.nav-btn:hover:not(:disabled) {
+.nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    box-shadow: none;
+    background: #cccccc !important;
+    color: #666666 !important;
+    pointer-events: none;
+}
+
+.nav-btn:not(:disabled):hover {
     transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.nav-btn:not(:disabled):active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 /* 광고 페이지 스타일 */
