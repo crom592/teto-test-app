@@ -6,28 +6,40 @@
 }
 
 :root {
-    /* 캐주얼한 파스텔 색상 팔레트 */
-    --primary-color: #6B5EF9;
-    --secondary-color: #FF6B9D;
-    --accent-color: #FFE66D;
-    --background: #F7F9FC;
+    /* 메지로 대학 스타일 파스텔 색상 팔레트 */
+    --primary-color: #89C3EB; /* 연한 파랑 */
+    --secondary-color: #F4C6D0; /* 연한 분홍 */
+    --accent-color: #A8D8B5; /* 연한 초록 */
+    --warm-accent: #F0E5D8; /* 연한 베이지 */
+    --background: #FAFBFC; /* 부드러운 회백색 배경 */
     --surface: #FFFFFF;
-    --text-primary: #2D3748;
+    --surface-soft: #FFF9F5; /* 크림색 표면 */
+    --text-primary: #4A5568;
     --text-secondary: #718096;
     --text-tertiary: #A0AEC0;
-    --border-color: #E2E8F0;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.1);
-    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
-    --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
-    --radius-sm: 8px;
-    --radius-md: 16px;
-    --radius-lg: 24px;
-    --radius-xl: 32px;
+    --border-color: #E8ECF1;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.05);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.08);
+    --radius-sm: 12px;
+    --radius-md: 20px;
+    --radius-lg: 28px;
+    --radius-xl: 40px;
+    
+    /* 추가 파스텔 색상 */
+    --pastel-yellow: #FFF3CD;
+    --pastel-purple: #E8D8F5;
+    --pastel-orange: #FFE4D6;
+    --pastel-mint: #D4F1E8;
 }
 
 body {
     font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     background-color: var(--background);
+    background-image: 
+        radial-gradient(circle at 20% 80%, rgba(137, 195, 235, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(244, 198, 208, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 40% 40%, rgba(168, 216, 181, 0.1) 0%, transparent 50%);
     color: var(--text-primary);
     line-height: 1.6;
     overflow-x: hidden;
@@ -35,13 +47,13 @@ body {
 
 /* 헤더 스타일 */
 .site-header {
-    background: var(--surface);
-    border-bottom: 1px solid var(--border-color);
+    background: rgba(255, 255, 255, 0.98);
+    border-bottom: 1px solid rgba(232, 236, 241, 0.5);
     position: sticky;
     top: 0;
     z-index: 100;
-    backdrop-filter: blur(10px);
-    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
 }
 
 .header-container {
@@ -104,6 +116,7 @@ body {
 .nav-item.active {
     background: var(--primary-color);
     color: white;
+    box-shadow: 0 4px 12px rgba(137, 195, 235, 0.3);
 }
 
 .nav-item.active .nav-icon {
@@ -123,15 +136,16 @@ body {
 }
 
 .banner-content {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #89C3EB 0%, #A8D8B5 50%, #F4C6D0 100%);
     border-radius: var(--radius-xl);
     padding: 3rem;
     position: relative;
     overflow: hidden;
-    color: white;
+    color: var(--text-primary);
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 8px 24px rgba(137, 195, 235, 0.25);
 }
 
 .banner-title {
@@ -142,9 +156,10 @@ body {
 }
 
 .text-gradient {
-    background: linear-gradient(45deg, #FFE66D, #FF6B9D);
+    background: linear-gradient(45deg, #4A5568, #2D3748);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    font-weight: 800;
 }
 
 .banner-subtitle {
@@ -252,13 +267,14 @@ img[src*="assets/icons/"] {
 
 .slider-card {
     flex: 0 0 280px;
-    background: var(--surface);
+    background: linear-gradient(135deg, var(--surface-soft) 0%, var(--surface) 100%);
     border-radius: var(--radius-lg);
     padding: 1.5rem;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    border: 1px solid rgba(232, 236, 241, 0.3);
 }
 
 .slider-card:hover {
@@ -270,16 +286,17 @@ img[src*="assets/icons/"] {
     position: absolute;
     top: 1rem;
     right: 1rem;
-    background: var(--primary-color);
-    color: white;
-    width: 30px;
-    height: 30px;
+    background: linear-gradient(135deg, var(--secondary-color) 0%, var(--pastel-orange) 100%);
+    color: #C05621;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    box-shadow: 0 2px 8px rgba(244, 198, 208, 0.4);
 }
 
 .slider-thumbnail {
@@ -347,24 +364,31 @@ img[src*="assets/icons/"] {
     background: var(--surface);
     border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-md);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
     cursor: pointer;
     transition: all 0.3s ease;
     position: relative;
+    border: 1px solid rgba(232, 236, 241, 0.5);
 }
 
 .test-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
+    box-shadow: 0 8px 20px rgba(137, 195, 235, 0.15);
+    border-color: var(--primary-color);
+}
+
+.test-card:hover .test-thumbnail {
+    background: linear-gradient(135deg, var(--pastel-mint) 0%, var(--pastel-purple) 100%);
 }
 
 .test-thumbnail {
     height: 180px;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, var(--pastel-yellow) 0%, var(--pastel-mint) 100%);
     display: flex;
     align-items: center;
     justify-content: center;
     position: relative;
+    transition: all 0.3s ease;
 }
 
 .test-icon {
@@ -390,13 +414,15 @@ img[src*="assets/icons/"] {
 }
 
 .badge.new {
-    background: var(--accent-color);
-    color: var(--text-primary);
+    background: var(--pastel-mint);
+    color: #2F855A;
+    border: 1px solid rgba(47, 133, 90, 0.2);
 }
 
 .badge.hot {
-    background: var(--secondary-color);
-    color: white;
+    background: var(--pastel-orange);
+    color: #C05621;
+    border: 1px solid rgba(192, 86, 33, 0.2);
 }
 
 .test-info {
