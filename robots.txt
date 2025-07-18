@@ -14,8 +14,8 @@ Allow: /css/
 Allow: /js/
 Allow: /assets/
 
-# 광고 페이지는 검색엔진 노출 방지
-Disallow: /ads.html
+# 광고 페이지도 AdSense 크롤러 접근 허용 (검색엔진 노출만 방지)
+# Disallow: /ads.html
 
 # 임시 파일 및 백업 파일 차단
 Disallow: /*.tmp
