@@ -45,6 +45,7 @@
     <main>
         <section class="hero">
             <div class="hero-content">
+                <div class="hero-badge">🆕 인기 심리테스트</div>
                 <h1 class="hero-title">
                     <span class="gradient-text">에겐남·테토녀</span><br>
                     심리 테스트
@@ -55,21 +56,22 @@
                 </p>
                 <div class="hero-stats">
                     <div class="stat-item">
+                        <span class="stat-number" id="participantCount">157,892</span>
+                        <span class="stat-label">명이 참여</span>
+                    </div>
+                    <div class="stat-item">
                         <span class="stat-number">12</span>
-                        <span class="stat-label">문항</span>
+                        <span class="stat-label">개의 질문</span>
                     </div>
                     <div class="stat-item">
-                        <span class="stat-number">4</span>
-                        <span class="stat-label">유형</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">2</span>
-                        <span class="stat-label">분</span>
+                        <span class="stat-number">3</span>
+                        <span class="stat-label">분 소요</span>
                     </div>
                 </div>
-                <button class="cta-button" onclick="startTest()">
+                <button class="cta-button pulse" onclick="startTest()">
                     🧠 테스트 시작하기
                 </button>
+                <p class="hero-time">⏱ 평균 소요 시간: 2분 45초</p>
             </div>
         </section>
 
@@ -173,6 +175,31 @@
             </div>
         </section>
     </main>
+
+    <script>
+        // 참가자 수 카운트 애니메이션
+        function animateCounter(target, duration = 2000) {
+            const element = document.getElementById('participantCount');
+            const start = 150000;
+            const end = parseInt(target.replace(/,/g, ''));
+            const increment = (end - start) / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= end) {
+                    current = end;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current).toLocaleString();
+            }, 16);
+        }
+        
+        // 페이지 로드 시 카운터 애니메이션 실행
+        window.addEventListener('load', () => {
+            setTimeout(() => animateCounter('157,892'), 500);
+        });
+    </script>
 
     <footer>
         <div class="container">

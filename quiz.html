@@ -22,6 +22,7 @@
                         <div class="progress-fill" id="progressBar"></div>
                     </div>
                     <span class="progress-text" id="progressText">1/12</span>
+                    <span class="progress-percent" id="progressPercent">0%</span>
                 </div>
             </div>
         </nav>
@@ -178,6 +179,7 @@
             
             const progressPercent = ((currentQuestion + 1) / 12) * 100;
             document.getElementById('progressBar').style.width = progressPercent + '%';
+            document.getElementById('progressPercent').textContent = Math.round(progressPercent) + '%';
             
             const answerOptions = document.getElementById('answerOptions');
             answerOptions.innerHTML = '';
@@ -320,6 +322,7 @@
             // 진행 상태 초기화
             document.getElementById('progressText').textContent = '성별 선택';
             document.getElementById('progressBar').style.width = '0%';
+            document.getElementById('progressPercent').textContent = '0%';
         };
     </script>
 </body>
