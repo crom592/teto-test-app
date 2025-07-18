@@ -163,6 +163,7 @@
         let currentQuestion = 0;
         let scores = { E: 0, T: 0 };
         let selectedGender = '';
+        let answers = []; // 각 질문에 대한 답변 저장
 
         function updateQuestion() {
             const question = questions[currentQuestion];
@@ -188,14 +189,26 @@
                     <span class="answer-text">${answer.text}</span>
                 `;
                 
+                // 이전에 선택한 답변이 있으면 표시
+                if (answers[currentQuestion] === answer.type) {
+                    button.classList.add('selected');
+                }
+                
                 answerOptions.appendChild(button);
             });
             
             document.getElementById('prevBtn').disabled = currentQuestion === 0;
-            document.getElementById('nextBtn').disabled = true;
+            document.getElementById('nextBtn').disabled = !answers[currentQuestion];
         }
 
         function selectAnswer(type) {
+            // 이전 답변이 있으면 점수에서 제거
+            if (answers[currentQuestion]) {
+                scores[answers[currentQuestion]]--;
+            }
+            
+            // 새로운 답변 저장 및 점수 추가
+            answers[currentQuestion] = type;
             scores[type]++;
             
             // 답변 선택 시 버튼 상태 변경
@@ -206,17 +219,22 @@
             event.target.closest('.answer-btn').classList.add('selected');
             document.getElementById('nextBtn').disabled = false;
             
-            // 자동으로 다음 질문으로 넘어가기 (0.5초 후)
-            setTimeout(() => {
-                if (currentQuestion < questions.length - 1) {
-                    nextQuestion();
-                } else {
+            // 자동으로 다음 질문으로 넘어가지 않도록 수정 (사용자가 다음 버튼을 눌러야 함)
+            // 마지막 질문인 경우에만 자동으로 성별 선택으로 이동
+            if (currentQuestion === questions.length - 1) {
+                setTimeout(() => {
                     showGenderSelection();
-                }
-            }, 500);
+                }, 500);
+            }
         }
 
         function nextQuestion() {
+            // 답변이 선택되지 않았으면 진행 불가
+            if (!answers[currentQuestion]) {
+                alert('답변을 선택해주세요.');
+                return;
+            }
+            
             if (currentQuestion < questions.length - 1) {
                 currentQuestion++;
                 updateQuestion();
@@ -257,7 +275,15 @@
         }
 
         function determineType() {
-            const dominantTrait = scores.E >= scores.T ? 'E' : 'T';
+            // 정확한 점수 계산
+            let finalScores = { E: 0, T: 0 };
+            answers.forEach(answer => {
+                if (answer) {
+                    finalScores[answer]++;
+                }
+            });
+            
+            const dominantTrait = finalScores.E >= finalScores.T ? 'E' : 'T';
             return dominantTrait + (selectedGender === 'male' ? '남' : '녀');
         }
 
