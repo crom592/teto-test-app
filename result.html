@@ -52,6 +52,32 @@
                 <h2 class="result-subtitle" id="resultSubtitle">차분하고 섬세한 감성의 소유자</h2>
             </div>
 
+            <!-- 성향 퍼센트 표시 -->
+            <div class="result-percentage">
+                <h3>📊 나의 성향 분석</h3>
+                <div class="percentage-bars">
+                    <div class="percentage-item">
+                        <div class="percentage-label">
+                            <span class="percentage-type">에겐</span>
+                            <span class="percentage-value" id="egenPercent">67%</span>
+                        </div>
+                        <div class="percentage-bar">
+                            <div class="percentage-fill egen-fill" id="egenBar" style="width: 0"></div>
+                        </div>
+                    </div>
+                    <div class="percentage-item">
+                        <div class="percentage-label">
+                            <span class="percentage-type">테토</span>
+                            <span class="percentage-value" id="tetoPercent">33%</span>
+                        </div>
+                        <div class="percentage-bar">
+                            <div class="percentage-fill teto-fill" id="tetoBar" style="width: 0"></div>
+                        </div>
+                    </div>
+                </div>
+                <p class="percentage-note" id="percentageNote">12개 질문 중 8개에서 에겐 성향을 보여주셨어요!</p>
+            </div>
+
             <div class="result-description">
                 <div class="description-card">
                     <h3>💫 당신의 핵심 특성</h3>
@@ -247,6 +273,8 @@
             // 결과 표시
             setTimeout(() => {
                 displayResult(result);
+                // 퍼센트 표시
+                displayPercentage(result.scores);
             }, 1500);
         };
 
@@ -357,6 +385,32 @@
             navigator.clipboard.writeText(text).catch(err => {
                 console.error('Failed to copy: ', err);
             });
+        }
+
+        function displayPercentage(scores) {
+            const totalQuestions = 12;
+            const egenScore = scores.E || 0;
+            const tetoScore = scores.T || 0;
+            
+            // 퍼센트 계산
+            const egenPercent = Math.round((egenScore / totalQuestions) * 100);
+            const tetoPercent = Math.round((tetoScore / totalQuestions) * 100);
+            
+            // 퍼센트 표시
+            document.getElementById('egenPercent').textContent = egenPercent + '%';
+            document.getElementById('tetoPercent').textContent = tetoPercent + '%';
+            
+            // 프로그레스 바 애니메이션
+            setTimeout(() => {
+                document.getElementById('egenBar').style.width = egenPercent + '%';
+                document.getElementById('tetoBar').style.width = tetoPercent + '%';
+            }, 100);
+            
+            // 설명 텍스트 업데이트
+            const dominantType = egenScore >= tetoScore ? '에겐' : '테토';
+            const dominantCount = Math.max(egenScore, tetoScore);
+            document.getElementById('percentageNote').textContent = 
+                `12개 질문 중 ${dominantCount}개에서 ${dominantType} 성향을 보여주셨어요!`;
         }
 
         function retakeTest() {

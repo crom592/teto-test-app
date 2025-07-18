@@ -888,6 +888,100 @@ main {
     min-height: 100vh;
 }
 
+/* 성향 퍼센트 표시 */
+.result-percentage {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    margin-bottom: 2rem;
+}
+
+.result-percentage h3 {
+    color: #333;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.percentage-bars {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.percentage-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.percentage-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.percentage-type {
+    font-weight: 600;
+    color: #333;
+    font-size: 1.1rem;
+}
+
+.percentage-value {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.percentage-bar {
+    width: 100%;
+    height: 30px;
+    background: #f0f0f0;
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+}
+
+.percentage-fill {
+    height: 100%;
+    border-radius: 15px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.percentage-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 100%);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.egen-fill {
+    background: linear-gradient(90deg, #ff9a9e, #fda085);
+}
+
+.teto-fill {
+    background: linear-gradient(90deg, #a18cd1, #667eea);
+}
+
+.percentage-note {
+    color: #666;
+    font-size: 0.95rem;
+    text-align: center;
+    margin-top: 1rem;
+    font-style: italic;
+}
+
 .result-container {
     padding: 2rem;
     min-height: calc(100vh - 80px);
@@ -1350,6 +1444,18 @@ footer {
     
     .result-title {
         font-size: 1.8rem;
+    }
+    
+    .result-percentage {
+        padding: 1.5rem;
+    }
+    
+    .percentage-value {
+        font-size: 1.3rem;
+    }
+    
+    .percentage-bar {
+        height: 25px;
     }
 }
 
