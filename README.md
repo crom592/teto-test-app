@@ -1,6 +1,6 @@
-# 에겐남·테토녀 심리 테스트 💝⚡
+# 테토테스트 - 재미있는 심리테스트 모음 🧠
 
-재미있는 심리 테스트로 나의 감정·주도 성향을 알아보는 웹 애플리케이션입니다.
+다양한 심리테스트를 제공하는 캐주얼한 웹 플랫폼입니다. 에겐남·테토녀 테스트를 시작으로 계속해서 새로운 테스트가 추가됩니다.
 
 ## 🎯 프로젝트 소개
 
@@ -18,9 +18,8 @@
 
 ```
 teto-test-app/
-├── index.html              # 메인 페이지
-├── quiz.html               # 테스트 문항 페이지
-├── ads.html                # 광고 중간 페이지
+├── index.html              # 메인 페이지 (테스트 목록)
+├── quiz.html               # 에겐테토 테스트 페이지
 ├── result.html             # 결과 페이지
 ├── about.html              # 소개 페이지
 ├── privacy.html            # 개인정보처리방침
@@ -28,9 +27,12 @@ teto-test-app/
 ├── sitemap.xml             # 사이트맵
 ├── robots.txt              # 로봇 배제 표준
 ├── css/
-│   └── styles.css          # 메인 스타일시트
+│   ├── styles.css          # 기존 스타일시트
+│   └── styles-new.css      # 새로운 메인 스타일
 ├── js/
 │   └── main.js             # 메인 JavaScript
+├── data/
+│   └── tests.json          # 테스트 데이터
 ├── assets/                 # 이미지 및 정적 파일
 ├── CLAUDE.md               # 프로젝트 명세서
 ├── google-adsense-setup.md # AdSense 설정 가이드

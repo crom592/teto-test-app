@@ -3,25 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>에겐남·테토녀 심리 테스트 | 나의 감정·주도 성향 알아보기</title>
-    <meta name="description" content="나는 에겐형? 테토형? 감성적인 에겐과 주도적인 테토 중 어떤 성향인지 알아보세요! 12가지 질문으로 나의 연애·관계 스타일을 분석해보는 재미있는 심리 테스트">
-    <meta name="keywords" content="에겐남, 테토녀, 심리테스트, 성향테스트, 연애테스트, MBTI, 궁합테스트">
+    <title>테토테스트 - 재미있는 심리테스트 모음</title>
+    <meta name="description" content="에겐남 테토녀 테스트부터 다양한 심리테스트까지! 나를 알아가는 재미있는 시간">
+    <meta name="keywords" content="심리테스트, 성격테스트, 에겐남, 테토녀, 연애테스트, 재미테스트">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://teto-test-app.pages.dev/">
-    <meta property="og:title" content="에겐남·테토녀 심리 테스트 | 나의 감정·주도 성향 알아보기">
-    <meta property="og:description" content="나는 에겐형? 테토형? 감성적인 에겐과 주도적인 테토 중 어떤 성향인지 알아보세요!">
+    <meta property="og:title" content="테토테스트 - 재미있는 심리테스트 모음">
+    <meta property="og:description" content="에겐남 테토녀 테스트부터 다양한 심리테스트까지!">
     <meta property="og:image" content="https://teto-test-app.pages.dev/assets/og-image.jpg">
     
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://teto-test-app.pages.dev/">
-    <meta property="twitter:title" content="에겐남·테토녀 심리 테스트">
-    <meta property="twitter:description" content="나는 에겐형? 테토형? 감성적인 에겐과 주도적인 테토 중 어떤 성향인지 알아보세요!">
-    <meta property="twitter:image" content="https://teto-test-app.pages.dev/assets/og-image.jpg">
-    
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles-new.css">
     <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
     
     <!-- Google AdSense -->
@@ -29,208 +22,260 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="nav-container">
-                <h1 class="logo">에겐테토</h1>
-                <ul class="nav-menu">
-                    <li><a href="#about">소개</a></li>
-                    <li><a href="#how-it-works">테스트 방법</a></li>
-                    <li><a href="#types">유형 소개</a></li>
-                </ul>
+    <header class="site-header">
+        <div class="header-container">
+            <div class="logo-area">
+                <h1 class="site-logo">
+                    <span class="logo-emoji">🧠</span>
+                    <span class="logo-text">테토테스트</span>
+                </h1>
             </div>
-        </nav>
+            <nav class="main-nav">
+                <button class="nav-item active" data-category="all">
+                    <span class="nav-emoji">✨</span>
+                    <span class="nav-text">전체</span>
+                </button>
+                <button class="nav-item" data-category="personality">
+                    <span class="nav-emoji">🎭</span>
+                    <span class="nav-text">성격</span>
+                </button>
+                <button class="nav-item" data-category="love">
+                    <span class="nav-emoji">💘</span>
+                    <span class="nav-text">연애</span>
+                </button>
+                <button class="nav-item" data-category="fun">
+                    <span class="nav-emoji">🎪</span>
+                    <span class="nav-text">재미</span>
+                </button>
+                <button class="nav-item" data-category="psychology">
+                    <span class="nav-emoji">🧩</span>
+                    <span class="nav-text">심리</span>
+                </button>
+            </nav>
+        </div>
     </header>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <div class="hero-badge">🆕 인기 심리테스트</div>
-                <h1 class="hero-title">
-                    <span class="gradient-text">에겐남·테토녀</span><br>
-                    심리 테스트
-                </h1>
-                <p class="hero-subtitle">
-                    나는 감성적인 <strong>에겐(E)</strong>형? 주도적인 <strong>테토(T)</strong>형?<br>
-                    12가지 질문으로 나의 연애·관계 스타일을 알아보세요!
-                </p>
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number" id="participantCount">157,892</span>
-                        <span class="stat-label">명이 참여</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">12</span>
-                        <span class="stat-label">개의 질문</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">3</span>
-                        <span class="stat-label">분 소요</span>
-                    </div>
+    <main class="main-content">
+        <!-- 히어로 배너 -->
+        <section class="hero-banner">
+            <div class="banner-content">
+                <div class="banner-text">
+                    <h2 class="banner-title">
+                        <span class="text-gradient">나를 알아가는</span><br>
+                        재미있는 심리테스트
+                    </h2>
+                    <p class="banner-subtitle">
+                        매주 새로운 테스트가 추가됩니다!
+                    </p>
                 </div>
-                <button class="cta-button pulse" onclick="startTest()">
-                    🧠 테스트 시작하기
-                </button>
-                <p class="hero-time">⏱ 평균 소요 시간: 2분 45초</p>
-            </div>
-        </section>
-
-        <section id="about" class="about">
-            <div class="container">
-                <h2>에겐과 테토란?</h2>
-                <div class="type-cards">
-                    <div class="type-card egen">
-                        <div class="type-icon">🌸</div>
-                        <h3>에겐 (E)</h3>
-                        <p>감성적, 섬세함, 공감 중심</p>
-                        <ul>
-                            <li>감정 표현이 부드럽고 섬세</li>
-                            <li>타인의 감정을 잘 이해하고 공감</li>
-                            <li>갈등 상황에서 평화로운 해결 선호</li>
-                            <li>관계에서 조화를 중요하게 생각</li>
-                        </ul>
-                    </div>
-                    <div class="type-card teto">
-                        <div class="type-icon">⚡</div>
-                        <h3>테토 (T)</h3>
-                        <p>주도적, 직설적, 효율 중심</p>
-                        <ul>
-                            <li>결정력이 뛰어나고 주도적</li>
-                            <li>솔직하고 직설적인 표현</li>
-                            <li>목표 달성과 효율성을 중시</li>
-                            <li>리더십을 발휘하는 것을 좋아함</li>
-                        </ul>
-                    </div>
+                <div class="banner-illustration">
+                    <div class="floating-emoji" style="--delay: 0s">🧠</div>
+                    <div class="floating-emoji" style="--delay: 0.5s">💭</div>
+                    <div class="floating-emoji" style="--delay: 1s">✨</div>
+                    <div class="floating-emoji" style="--delay: 1.5s">🎯</div>
                 </div>
             </div>
         </section>
 
-        <section id="how-it-works" class="how-it-works">
-            <div class="container">
-                <h2>테스트 방법</h2>
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <h3>12가지 질문 답변</h3>
-                        <p>일상생활과 관계에서의 성향을 묻는 질문들에 답해보세요</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <h3>성별 선택</h3>
-                        <p>결과 해석을 위해 성별을 선택해주세요</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <h3>결과 확인</h3>
-                        <p>에겐남, 에겐녀, 테토남, 테토녀 중 나의 유형을 확인하세요</p>
-                    </div>
-                    <div class="step">
-                        <div class="step-number">4</div>
-                        <h3>SNS 공유</h3>
-                        <p>친구들과 결과를 공유하고 궁합을 확인해보세요</p>
-                    </div>
+        <!-- 인기 테스트 슬라이더 -->
+        <section class="popular-tests">
+            <div class="section-header">
+                <h3 class="section-title">🔥 지금 핫한 테스트</h3>
+                <a href="#" class="see-all">전체보기 →</a>
+            </div>
+            <div class="test-slider">
+                <div class="slider-container" id="popularSlider">
+                    <!-- 인기 테스트 카드들이 여기에 동적으로 추가됩니다 -->
                 </div>
             </div>
         </section>
 
-        <section id="types" class="types-preview">
-            <div class="container">
-                <h2>4가지 유형 미리보기</h2>
-                <div class="types-grid">
-                    <div class="type-preview egen-male">
-                        <h3>에겐남 💝</h3>
-                        <p>차분하고 섬세한 감성의 소유자</p>
-                        <div class="celebrity">대표: 원빈, 차은우, 정해인</div>
-                    </div>
-                    <div class="type-preview egen-female">
-                        <h3>에겐녀 🌺</h3>
-                        <p>감정에 민감하고 배려심 깊은 유형</p>
-                        <div class="celebrity">대표: 수지, 박보영, 장원영</div>
-                    </div>
-                    <div class="type-preview teto-male">
-                        <h3>테토남 🔥</h3>
-                        <p>당당하고 리더십이 넘치는 유형</p>
-                        <div class="celebrity">대표: 민규, 김종국, 옥택연</div>
-                    </div>
-                    <div class="type-preview teto-female">
-                        <h3>테토녀 ⚡</h3>
-                        <p>독립적이고 솔직한 추진형</p>
-                        <div class="celebrity">대표: 이효리, 제니, 이영지</div>
-                    </div>
+        <!-- 테스트 그리드 -->
+        <section class="all-tests">
+            <div class="section-header">
+                <h3 class="section-title">전체 테스트</h3>
+                <div class="sort-options">
+                    <button class="sort-btn active" data-sort="latest">최신순</button>
+                    <button class="sort-btn" data-sort="popular">인기순</button>
                 </div>
+            </div>
+            <div class="test-grid" id="testGrid">
+                <!-- 테스트 카드들이 여기에 동적으로 추가됩니다 -->
             </div>
         </section>
 
-        <section class="final-cta">
-            <div class="container">
-                <h2>지금 바로 시작해보세요!</h2>
-                <p>2분만 투자하면 나의 진짜 성향을 알 수 있어요</p>
-                <button class="cta-button large" onclick="startTest()">
-                    🚀 테스트 시작하기
-                </button>
-                <div class="disclaimer">
-                    <p>※ 이 테스트는 재미를 위한 것이며 과학적 근거는 없습니다.</p>
-                    <p>※ 모든 인간은 복합적이며 이 유형은 참고용입니다.</p>
-                </div>
+        <!-- 광고 영역 -->
+        <section class="ad-section">
+            <div class="ad-container">
+                <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5534320609992391"
+                        crossorigin="anonymous"></script>
+                <ins class="adsbygoogle"
+                     style="display:block"
+                     data-ad-client="ca-pub-5534320609992391"
+                     data-ad-slot="1234567890"
+                     data-ad-format="auto"
+                     data-full-width-responsive="true"></ins>
+                <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                </script>
             </div>
         </section>
     </main>
 
-    <script>
-        // 참가자 수 카운트 애니메이션
-        function animateCounter(target, duration = 2000) {
-            const element = document.getElementById('participantCount');
-            const start = 150000;
-            const end = parseInt(target.replace(/,/g, ''));
-            const increment = (end - start) / (duration / 16);
-            let current = start;
-            
-            const timer = setInterval(() => {
-                current += increment;
-                if (current >= end) {
-                    current = end;
-                    clearInterval(timer);
-                }
-                element.textContent = Math.floor(current).toLocaleString();
-            }, 16);
-        }
-        
-        // 페이지 로드 시 카운터 애니메이션 실행
-        window.addEventListener('load', () => {
-            setTimeout(() => animateCounter('157,892'), 500);
-        });
-    </script>
-
-    <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>에겐테토</h3>
-                    <p>재미있는 심리 테스트로 나를 알아가는 시간</p>
-                </div>
-                <div class="footer-section">
-                    <h4>메뉴</h4>
-                    <ul>
-                        <li><a href="#about">소개</a></li>
-                        <li><a href="#how-it-works">테스트 방법</a></li>
-                        <li><a href="#types">유형 소개</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>정보</h4>
-                    <ul>
-                        <li><a href="privacy.html">개인정보처리방침</a></li>
-                        <li><a href="about.html">제작자 소개</a></li>
-                        <li><a href="contact.html">문의하기</a></li>
-                    </ul>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>© 2024 테토테스트. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="privacy.html">개인정보처리방침</a>
+                    <a href="contact.html">문의하기</a>
+                    <a href="about.html">소개</a>
                 </div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 에겐테토. All rights reserved.</p>
-            </div>
+            <p class="footer-note">본 테스트는 재미를 위한 것이며 전문적인 진단이 아닙니다.</p>
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        // 테스트 데이터 로드 및 렌더링
+        let allTests = [];
+        let currentCategory = 'all';
+        let currentSort = 'latest';
+
+        // 테스트 카드 HTML 생성
+        function createTestCard(test) {
+            const badges = [];
+            if (test.isNew) badges.push('<span class="badge new">NEW</span>');
+            if (test.isHot) badges.push('<span class="badge hot">HOT</span>');
+
+            return `
+                <article class="test-card" onclick="location.href='${test.url}'">
+                    <div class="test-thumbnail">
+                        <span class="test-emoji">${test.thumbnail}</span>
+                        ${badges.length > 0 ? `<div class="test-badges">${badges.join('')}</div>` : ''}
+                    </div>
+                    <div class="test-info">
+                        <div class="test-category">
+                            <span class="category-emoji">${test.categoryEmoji}</span>
+                            <span class="category-name">${test.categoryName}</span>
+                        </div>
+                        <h4 class="test-title">${test.title}</h4>
+                        <p class="test-subtitle">${test.subtitle}</p>
+                        <div class="test-meta">
+                            <span class="meta-item">
+                                <span class="meta-icon">👥</span>
+                                <span class="meta-text">${test.participants.toLocaleString()}명</span>
+                            </span>
+                            <span class="meta-item">
+                                <span class="meta-icon">⏱️</span>
+                                <span class="meta-text">${test.duration}</span>
+                            </span>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        // 인기 테스트 슬라이더 카드 생성
+        function createSliderCard(test) {
+            return `
+                <div class="slider-card" onclick="location.href='${test.url}'">
+                    <div class="slider-rank">${test.rank}</div>
+                    <div class="slider-thumbnail">${test.thumbnail}</div>
+                    <div class="slider-info">
+                        <h4 class="slider-title">${test.title}</h4>
+                        <p class="slider-participants">${test.participants.toLocaleString()}명 참여</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // 테스트 데이터 로드
+        async function loadTests() {
+            try {
+                const response = await fetch('data/tests.json');
+                const data = await response.json();
+                allTests = data.tests;
+                renderTests();
+                renderPopularSlider();
+            } catch (error) {
+                console.error('Failed to load tests:', error);
+                // 폴백 데이터 사용
+                allTests = [
+                    {
+                        id: "egen-teto",
+                        title: "에겐남·테토녀 테스트",
+                        subtitle: "나는 감성적인 에겐? 주도적인 테토?",
+                        thumbnail: "🧠",
+                        category: "personality",
+                        categoryName: "성격유형",
+                        categoryEmoji: "🎭",
+                        participants: 157892,
+                        duration: "3분",
+                        isNew: true,
+                        isHot: true,
+                        url: "quiz.html"
+                    }
+                ];
+                renderTests();
+                renderPopularSlider();
+            }
+        }
+
+        // 테스트 렌더링
+        function renderTests() {
+            const testGrid = document.getElementById('testGrid');
+            let filteredTests = allTests;
+
+            // 카테고리 필터링
+            if (currentCategory !== 'all') {
+                filteredTests = allTests.filter(test => test.category === currentCategory);
+            }
+
+            // 정렬
+            if (currentSort === 'popular') {
+                filteredTests.sort((a, b) => b.participants - a.participants);
+            } else {
+                filteredTests.sort((a, b) => b.isNew - a.isNew);
+            }
+
+            // 렌더링
+            testGrid.innerHTML = filteredTests.map(test => createTestCard(test)).join('');
+        }
+
+        // 인기 슬라이더 렌더링
+        function renderPopularSlider() {
+            const slider = document.getElementById('popularSlider');
+            const popularTests = [...allTests]
+                .sort((a, b) => b.participants - a.participants)
+                .slice(0, 5)
+                .map((test, index) => ({ ...test, rank: index + 1 }));
+
+            slider.innerHTML = popularTests.map(test => createSliderCard(test)).join('');
+        }
+
+        // 카테고리 필터
+        document.querySelectorAll('.nav-item').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentCategory = btn.dataset.category;
+                renderTests();
+            });
+        });
+
+        // 정렬 옵션
+        document.querySelectorAll('.sort-btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                currentSort = btn.dataset.sort;
+                renderTests();
+            });
+        });
+
+        // 페이지 로드 시 테스트 로드
+        window.addEventListener('load', loadTests);
+    </script>
 </body>
 </html>
