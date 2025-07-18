@@ -232,12 +232,7 @@
 
         // 페이지 로드 시 결과 표시
         window.onload = function() {
-            // 광고 시청 확인
-            const adViewed = localStorage.getItem('adViewed');
-            if (!adViewed) {
-                window.location.href = 'ads.html';
-                return;
-            }
+            // 광고 페이지 건너뛰기 - 광고 시청 확인 제거
 
             // 테스트 결과 가져오기
             const testResult = localStorage.getItem('testResult');
