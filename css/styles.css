@@ -465,8 +465,14 @@ main {
 }
 
 .gender-selection h2 {
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     color: #333;
+}
+
+.gender-subtitle {
+    color: #666;
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
 }
 
 .gender-options {

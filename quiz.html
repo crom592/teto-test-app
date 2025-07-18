@@ -29,7 +29,22 @@
 
     <main class="quiz-container">
         <div class="quiz-content">
-            <div class="question-card" id="questionCard">
+            <div class="gender-selection" id="genderSelection">
+                <h2>성별을 선택해주세요</h2>
+                <p class="gender-subtitle">테스트 결과를 위해 성별을 선택해주세요</p>
+                <div class="gender-options">
+                    <button class="gender-btn" onclick="startQuizWithGender('male')">
+                        <span class="gender-icon">👨</span>
+                        <span class="gender-text">남성</span>
+                    </button>
+                    <button class="gender-btn" onclick="startQuizWithGender('female')">
+                        <span class="gender-icon">👩</span>
+                        <span class="gender-text">여성</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="question-card" id="questionCard" style="display: none;">
                 <div class="question-number" id="questionNumber">질문 1</div>
                 <h2 class="question-text" id="questionText">
                     친구가 고민을 털어놓을 때 나의 첫 반응은?
@@ -46,21 +61,7 @@
                 </div>
             </div>
 
-            <div class="gender-selection" id="genderSelection" style="display: none;">
-                <h2>성별을 선택해주세요</h2>
-                <div class="gender-options">
-                    <button class="gender-btn" onclick="selectGender('male')">
-                        <span class="gender-icon">👨</span>
-                        <span class="gender-text">남성</span>
-                    </button>
-                    <button class="gender-btn" onclick="selectGender('female')">
-                        <span class="gender-icon">👩</span>
-                        <span class="gender-text">여성</span>
-                    </button>
-                </div>
-            </div>
-
-            <div class="navigation-buttons">
+            <div class="navigation-buttons" id="navigationButtons" style="display: none;">
                 <button class="nav-btn prev-btn" id="prevBtn" onclick="previousQuestion()" disabled>
                     ← 이전
                 </button>
@@ -77,6 +78,7 @@
         let scores = { E: 0, T: 0 };
         let selectedGender = '';
         let answers = []; // 각 질문에 대한 답변 저장
+        let quizStarted = false;
         
         // 12가지 질문 데이터
         const questions = [
@@ -227,12 +229,6 @@
             document.getElementById('nextBtn').disabled = false;
             
             // 자동으로 다음 질문으로 넘어가지 않도록 수정 (사용자가 다음 버튼을 눌러야 함)
-            // 마지막 질문인 경우에만 자동으로 성별 선택으로 이동
-            if (currentQuestion === questions.length - 1) {
-                setTimeout(() => {
-                    showGenderSelection();
-                }, 500);
-            }
         }
 
         function nextQuestion() {
@@ -247,7 +243,8 @@
                 currentQuestion++;
                 updateQuestion();
             } else {
-                showGenderSelection();
+                // 모든 질문 완료 시 결과 페이지로 이동
+                showResults();
             }
         }
 
@@ -259,23 +256,28 @@
             }
         }
         
+        // 성별 선택 후 퀴즈 시작
+        function startQuizWithGender(gender) {
+            selectedGender = gender;
+            quizStarted = true;
+            
+            // 성별 선택 화면 숨기고 퀴즈 화면 표시
+            document.getElementById('genderSelection').style.display = 'none';
+            document.getElementById('questionCard').style.display = 'block';
+            document.getElementById('navigationButtons').style.display = 'flex';
+            
+            // 첫 번째 질문 표시
+            updateQuestion();
+        }
+        
         // 전역 스코프에 함수 노출
         window.nextQuestion = nextQuestion;
         window.previousQuestion = previousQuestion;
         window.selectAnswer = selectAnswer;
         window.selectGender = selectGender;
+        window.startQuizWithGender = startQuizWithGender;
 
-        function showGenderSelection() {
-            document.getElementById('questionCard').style.display = 'none';
-            document.getElementById('genderSelection').style.display = 'block';
-            document.querySelector('.navigation-buttons').style.display = 'none';
-            document.getElementById('progressText').textContent = '성별 선택';
-            document.getElementById('progressBar').style.width = '100%';
-        }
-
-        function selectGender(gender) {
-            selectedGender = gender;
-            
+        function showResults() {
             // 결과 저장
             const result = {
                 scores: scores,
@@ -287,6 +289,11 @@
             
             // 광고 페이지로 이동
             window.location.href = 'ads.html';
+        }
+
+        function selectGender(gender) {
+            // 이 함수는 이제 사용되지 않지만 호환성을 위해 유지
+            startQuizWithGender(gender);
         }
 
         function determineType() {
@@ -302,19 +309,17 @@
             return dominantTrait + (selectedGender === 'male' ? '남' : '녀');
         }
 
-        // 페이지 로드 시 첫 번째 질문 표시
+        // 페이지 로드 시 성별 선택 화면 표시
         window.onload = function() {
             // 초기 상태 설정
             currentQuestion = 0;
             scores = { E: 0, T: 0 };
             answers = [];
+            quizStarted = false;
             
-            updateQuestion();
-            
-            // 버튼 초기 상태 확인
-            console.log('Page loaded. Initial button states:');
-            console.log('Previous button disabled:', document.getElementById('prevBtn').disabled);
-            console.log('Next button disabled:', document.getElementById('nextBtn').disabled);
+            // 진행 상태 초기화
+            document.getElementById('progressText').textContent = '성별 선택';
+            document.getElementById('progressBar').style.width = '0%';
         };
     </script>
 </body>
