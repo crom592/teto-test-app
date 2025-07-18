@@ -26,29 +26,29 @@
         <div class="header-container">
             <div class="logo-area">
                 <h1 class="site-logo">
-                    <span class="logo-emoji">🧠</span>
+                    <img src="assets/icons/brain.svg" alt="" class="logo-icon">
                     <span class="logo-text">테토테스트</span>
                 </h1>
             </div>
             <nav class="main-nav">
                 <button class="nav-item active" data-category="all">
-                    <span class="nav-emoji">✨</span>
+                    <img src="assets/icons/sparkles.svg" alt="" class="nav-icon">
                     <span class="nav-text">전체</span>
                 </button>
                 <button class="nav-item" data-category="personality">
-                    <span class="nav-emoji">🎭</span>
+                    <img src="assets/icons/mask.svg" alt="" class="nav-icon">
                     <span class="nav-text">성격</span>
                 </button>
                 <button class="nav-item" data-category="love">
-                    <span class="nav-emoji">💘</span>
+                    <img src="assets/icons/heart.svg" alt="" class="nav-icon">
                     <span class="nav-text">연애</span>
                 </button>
                 <button class="nav-item" data-category="fun">
-                    <span class="nav-emoji">🎪</span>
+                    <img src="assets/icons/party.svg" alt="" class="nav-icon">
                     <span class="nav-text">재미</span>
                 </button>
                 <button class="nav-item" data-category="psychology">
-                    <span class="nav-emoji">🧩</span>
+                    <img src="assets/icons/puzzle.svg" alt="" class="nav-icon">
                     <span class="nav-text">심리</span>
                 </button>
             </nav>
@@ -80,8 +80,14 @@
         <!-- 인기 테스트 슬라이더 -->
         <section class="popular-tests">
             <div class="section-header">
-                <h3 class="section-title">🔥 지금 핫한 테스트</h3>
-                <a href="#" class="see-all">전체보기 →</a>
+                <h3 class="section-title">
+                    <img src="assets/icons/fire.svg" alt="" class="section-icon">
+                    지금 핫한 테스트
+                </h3>
+                <a href="#" class="see-all">
+                    전체보기
+                    <img src="assets/icons/arrow-right.svg" alt="" class="arrow-icon">
+                </a>
             </div>
             <div class="test-slider">
                 <div class="slider-container" id="popularSlider">
@@ -151,23 +157,23 @@
             return `
                 <article class="test-card" onclick="location.href='${test.url}'">
                     <div class="test-thumbnail">
-                        <span class="test-emoji">${test.thumbnail}</span>
+                        <img src="${test.thumbnailIcon}" alt="" class="test-icon">
                         ${badges.length > 0 ? `<div class="test-badges">${badges.join('')}</div>` : ''}
                     </div>
                     <div class="test-info">
                         <div class="test-category">
-                            <span class="category-emoji">${test.categoryEmoji}</span>
+                            <img src="${test.categoryIcon}" alt="" class="category-icon">
                             <span class="category-name">${test.categoryName}</span>
                         </div>
                         <h4 class="test-title">${test.title}</h4>
                         <p class="test-subtitle">${test.subtitle}</p>
                         <div class="test-meta">
                             <span class="meta-item">
-                                <span class="meta-icon">👥</span>
+                                <img src="assets/icons/users.svg" alt="" class="meta-icon">
                                 <span class="meta-text">${test.participants.toLocaleString()}명</span>
                             </span>
                             <span class="meta-item">
-                                <span class="meta-icon">⏱️</span>
+                                <img src="assets/icons/clock.svg" alt="" class="meta-icon">
                                 <span class="meta-text">${test.duration}</span>
                             </span>
                         </div>
@@ -181,7 +187,9 @@
             return `
                 <div class="slider-card" onclick="location.href='${test.url}'">
                     <div class="slider-rank">${test.rank}</div>
-                    <div class="slider-thumbnail">${test.thumbnail}</div>
+                    <div class="slider-thumbnail">
+                        <img src="${test.thumbnailIcon}" alt="" class="slider-icon">
+                    </div>
                     <div class="slider-info">
                         <h4 class="slider-title">${test.title}</h4>
                         <p class="slider-participants">${test.participants.toLocaleString()}명 참여</p>
@@ -206,10 +214,10 @@
                         id: "egen-teto",
                         title: "에겐남·테토녀 테스트",
                         subtitle: "나는 감성적인 에겐? 주도적인 테토?",
-                        thumbnail: "🧠",
+                        thumbnailIcon: "assets/icons/test-brain.svg",
                         category: "personality",
                         categoryName: "성격유형",
-                        categoryEmoji: "🎭",
+                        categoryIcon: "assets/icons/mask.svg",
                         participants: 157892,
                         duration: "3분",
                         isNew: true,

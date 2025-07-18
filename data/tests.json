@@ -5,10 +5,10 @@
       "title": "에겐남·테토녀 테스트",
       "subtitle": "나는 감성적인 에겐? 주도적인 테토?",
       "description": "12가지 질문으로 알아보는 나의 진짜 성향",
-      "thumbnail": "🧠",
+      "thumbnailIcon": "assets/icons/test-brain.svg",
       "category": "personality",
       "categoryName": "성격유형",
-      "categoryEmoji": "🎭",
+      "categoryIcon": "assets/icons/mask.svg",
       "questionCount": 12,
       "duration": "3분",
       "participants": 157892,
@@ -22,10 +22,10 @@
       "title": "나의 이상형 찾기",
       "subtitle": "내가 진짜 원하는 사람은?",
       "description": "숨겨진 이상형을 찾아주는 심리테스트",
-      "thumbnail": "💕",
+      "thumbnailIcon": "assets/icons/test-heart.svg",
       "category": "love",
       "categoryName": "연애",
-      "categoryEmoji": "💘",
+      "categoryIcon": "assets/icons/heart.svg",
       "questionCount": 10,
       "duration": "2분",
       "participants": 89234,
@@ -39,10 +39,10 @@
       "title": "나를 닮은 동물은?",
       "subtitle": "성격으로 알아보는 동물 유형",
       "description": "12가지 동물 중 나와 가장 닮은 동물 찾기",
-      "thumbnail": "🐾",
+      "thumbnailIcon": "assets/icons/test-paw.svg",
       "category": "fun",
       "categoryName": "재미",
-      "categoryEmoji": "🎪",
+      "categoryIcon": "assets/icons/party.svg",
       "questionCount": 8,
       "duration": "2분",
       "participants": 234567,
@@ -56,10 +56,10 @@
       "title": "내 마음의 색깔은?",
       "subtitle": "색으로 보는 심리 상태",
       "description": "지금 나의 심리상태를 색으로 표현하면?",
-      "thumbnail": "🎨",
+      "thumbnailIcon": "assets/icons/test-palette.svg",
       "category": "psychology",
       "categoryName": "심리",
-      "categoryEmoji": "🧩",
+      "categoryIcon": "assets/icons/puzzle.svg",
       "questionCount": 15,
       "duration": "4분",
       "participants": 45678,
@@ -73,27 +73,27 @@
     {
       "id": "all",
       "name": "전체",
-      "emoji": "✨"
+      "icon": "assets/icons/sparkles.svg"
     },
     {
       "id": "personality",
       "name": "성격유형",
-      "emoji": "🎭"
+      "icon": "assets/icons/mask.svg"
     },
     {
       "id": "love",
       "name": "연애",
-      "emoji": "💘"
+      "icon": "assets/icons/heart.svg"
     },
     {
       "id": "fun",
       "name": "재미",
-      "emoji": "🎪"
+      "icon": "assets/icons/party.svg"
     },
     {
       "id": "psychology",
       "name": "심리",
-      "emoji": "🧩"
+      "icon": "assets/icons/puzzle.svg"
     }
   ]
 }

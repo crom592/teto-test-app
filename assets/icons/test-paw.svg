@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="pawGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffe66d;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#ff6b6b;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <circle cx="256" cy="256" r="240" fill="#fffbf0"/>
+  <g transform="scale(0.7) translate(110, 110)">
+    <ellipse cx="155" cy="120" rx="35" ry="45" fill="url(#pawGradient)"/>
+    <ellipse cx="355" cy="120" rx="35" ry="45" fill="url(#pawGradient)"/>
+    <ellipse cx="100" cy="200" rx="40" ry="50" fill="url(#pawGradient)"/>
+    <ellipse cx="410" cy="200" rx="40" ry="50" fill="url(#pawGradient)"/>
+    <path d="M160 280c0-35 30-65 65-65h60c35 0 65 30 65 65v50c0 55-45 100-100 100h-40c-55 0-100-45-100-100v-50z" fill="url(#pawGradient)"/>
+  </g>
+</svg>
