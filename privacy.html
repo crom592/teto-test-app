@@ -329,6 +329,78 @@
             text-decoration: underline;
         }
 
+        .info-table,
+        .retention-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .info-table th,
+        .retention-table th {
+            background: #667eea;
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .info-table td,
+        .retention-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .info-table tr:hover,
+        .retention-table tr:hover {
+            background: #f7fafc;
+        }
+
+        .info-notice {
+            background: #fff5f5;
+            border: 1px solid #feb2b2;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .info-notice p {
+            color: #c53030;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .security-measures {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .measure-item {
+            background: #f7fafc;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .measure-item h3 {
+            color: #2d3748;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .measure-item ul {
+            margin: 0;
+            padding-left: 1.2rem;
+        }
+
+        .measure-item li {
+            margin-bottom: 0.5rem;
+            color: #4a5568;
+        }
+
         @media (max-width: 768px) {
             .privacy-hero h1 {
                 font-size: 2rem;
@@ -337,6 +409,22 @@
             .privacy-section {
                 padding: 1.5rem;
                 margin-bottom: 1.5rem;
+            }
+
+            .info-table,
+            .retention-table {
+                font-size: 0.8rem;
+            }
+
+            .info-table th,
+            .info-table td,
+            .retention-table th,
+            .retention-table td {
+                padding: 0.5rem;
+            }
+
+            .security-measures {
+                grid-template-columns: 1fr;
             }
         }
     </style>

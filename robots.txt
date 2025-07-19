@@ -8,11 +8,15 @@ Allow: /result.html
 Allow: /about.html
 Allow: /privacy.html
 Allow: /contact.html
+Allow: /test-details.html
 
 # CSS, JS, 이미지 파일 허용
 Allow: /css/
 Allow: /js/
 Allow: /assets/
+
+# ads.txt 파일 허용 (AdSense 필수)
+Allow: /ads.txt
 
 # 광고 페이지도 AdSense 크롤러 접근 허용 (검색엔진 노출만 방지)
 # Disallow: /ads.html

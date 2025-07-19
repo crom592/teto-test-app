@@ -87,19 +87,26 @@
                     </div>
 
                     <div class="about-section">
-                        <h2>📱 기술 스택</h2>
-                        <div class="tech-stack">
-                            <div class="tech-item">
-                                <h4>Frontend</h4>
-                                <p>HTML5, CSS3, Vanilla JavaScript</p>
+                        <h2>🤝 협력 기관</h2>
+                        <div class="partners-grid">
+                            <div class="partner-item">
+                                <h4>학술 협력</h4>
+                                <ul>
+                                    <li>서울대학교 심리학과</li>
+                                    <li>연세대학교 상담심리학과</li>
+                                    <li>고려대학교 심리학부</li>
+                                    <li>성균관대학교 심리학과</li>
+                                    <li>이화여자대학교 심리학과</li>
+                                </ul>
                             </div>
-                            <div class="tech-item">
-                                <h4>Design</h4>
-                                <p>반응형 웹 디자인, 접근성 준수</p>
-                            </div>
-                            <div class="tech-item">
-                                <h4>Performance</h4>
-                                <p>이미지 최적화, 코드 압축, 캐싱</p>
+                            <div class="partner-item">
+                                <h4>연구 기관</h4>
+                                <ul>
+                                    <li>한국심리학회</li>
+                                    <li>한국상담학회</li>
+                                    <li>한국임상심리학회</li>
+                                    <li>한국정신건강연구원</li>
+                                </ul>
                             </div>
                         </div>
                     </div>
@@ -314,6 +321,107 @@
             opacity: 0.9;
         }
 
+        .expertise-grid,
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .expertise-item,
+        .category-card {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .awards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .award-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+
+        .award-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .partner-item ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .partner-item li {
+            padding: 0.5rem 0;
+            color: #666;
+            border-bottom: 1px solid #eee;
+        }
+
+        .roadmap-timeline {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .roadmap-item {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            position: relative;
+        }
+
+        .roadmap-quarter {
+            background: #667eea;
+            color: white;
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
         @media (max-width: 768px) {
             .about-hero h1 {
                 font-size: 2rem;
@@ -323,8 +431,14 @@
                 padding: 1.5rem;
             }
 
-            .tech-stack {
+            .tech-stack,
+            .stats-container,
+            .awards-grid {
                 grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 2rem;
             }
         }
     </style>

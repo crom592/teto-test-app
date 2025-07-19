@@ -1,0 +1,6 @@
+# ads.txt file for teto-test-app.pages.dev
+# Google AdSense
+google.com, pub-5534320609992391, DIRECT, f08c47fec0942fa0
+
+# 추가 광고 네트워크를 사용하는 경우 아래에 추가하세요
+# example.com, pub-0000000000000000, DIRECT, 00000000000000000
